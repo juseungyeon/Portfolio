@@ -208,6 +208,9 @@ header nav li a:hover:before{opacity: 1; width: 100%;}
 .scroll-indicator { position:fixed; right:20px; bottom:20px; width:1px; z-index: 10; height: 96px;}
 .scroll-indicator:before { content:""; position:fixed; right:20px; bottom:20px; width:2px; background:#333; height: 96px;}
 .indicator { top:0; left:-1px; position:absolute; width:2px; height:10px; background:#fff; transition:.5s; -webkit-transition: .5s; -moz-transition: .5s; }
+.enjoy {display: table; height: 100vh; margin: 0 auto;}
+.enjoy > div {font-size: 8vw; display: table-cell; vertical-align: middle; width: 82vw;}
+.enjoy > div p {text-shadow: -1px -1px 0 #111, 1px -1px 0 #111, -1px 1px 0 #111, 1px 1px 0 #111; color: #fff; line-height: 115%;}
 
 
 

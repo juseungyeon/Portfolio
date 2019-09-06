@@ -140,6 +140,22 @@ $(document).ready(function($) {
             }, 1800);
 
         }
+     
+        function locationChange(){
+            var oldUrl = 'http://jooosg.cafe24.com/'; 
+            var changeUrl = 'http://jooosg.cafe24.com/sorry.html'; 
+            var urlString = location.href;
+            if (urlString.match(oldUrl)){
+                window.location.replace(urlString.replace(oldUrl, changeUrl));
+            } 
+        }
+        
+        var agent = navigator.userAgent.toLowerCase();  
+        var name = navigator.appName;
+        if(name == "Internet Explorer" || agent.indexOf("triden") > -1 || agent.indexOf("edge/") > -1) {
+            locationChange();
+        }
+    
     });
     
 });
