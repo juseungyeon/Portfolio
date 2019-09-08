@@ -64,26 +64,15 @@ $(document).ready(function($) {
                $(".close").css( 'pointer-events', '' );
         }, 2000);
     });
-    
-    
-   $(".about-btn").on("click",function(){
-        $(".about").addClass("active");
-        $(".close").css( 'pointer-events', 'none' );
-        setTimeout(function() {
-               $(".close").css( 'pointer-events', '' );
-        }, 2000);
-    });
+
 
     $(".close").on("click",function(){
-        $(".work-form, .about").
-        
-        removeClass("active");
-        $(".work-btn, .about-btn").css( 'pointer-events', 'none' );
-        $(".work-form, .about").css( 'transition', '0.5s 2s' );
+        $(".work-form").removeClass("active");
+        $(".work-btn").css( 'pointer-events', 'none' );
+        $(".work-form").css( 'transition', '0.5s 2s' );
         setTimeout(function() {
-            
-               $(".work-btn, .about-btn").css( 'pointer-events', '' );
-                $(".work-form, .about").css( 'transition', '' );
+            $(".work-btn").css( 'pointer-events', '' );
+            $(".work-form").css( 'transition', '' );
         }, 2300);
     });
     
