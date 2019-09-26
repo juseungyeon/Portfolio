@@ -1,102 +1,4 @@
-$(document).ready(function($) { 
-
-    $(window).scroll(function(){
-        var wScroll = $(window).scrollTop();
-       
-        var workNum = $('.work > div');
-        for(var i=0; i<workNum.length; i++){
-            if(wScroll >= workNum.eq([i]).offset().top - $(window).height() / 1.5){
-                workNum.eq([i]).addClass('view');
-            }
-            else {
-                workNum.eq([i]).removeClass('view');
-            }
-        }
-        
-        var work = $('.work');
-        if (work.length) {
-           $('.h-text, .bot-text').css({ 'transform': 'translate3d(0px, ' + -pageYOffset/500 + '%, 0px) skew(0deg, '+pageYOffset/100 +'deg)', 'opacity': 1-pageYOffset/450});
-            $('.scroll').css({'opacity': 1-pageYOffset/450});
-            if(wScroll>= work.offset().top) {
-            $('.h-text').css({ 'transform': 'translate3d(0px, -2%, 0px) skew(0deg, 6deg)', 'opacity': 0});
-            }
-        }
-        
-        var contact = $('.contact');
-        if (contact.length) {
-             if(wScroll >= contact.offset().top - $(window).height() / 1.8){
-                $('.trans-bg').addClass('up');
-            }
-            else {
-                $('.trans-bg').removeClass('up');
-            }
-        }
-        
-        $('.head-img h2').css({ 'transform': 'translate3d(0, ' + pageYOffset/35 + 'vh, 0) '});
-        
-       
-        
-        var transNum = $('.transform');
-        for(var i=0; i<transNum.length; i++){
-            if(wScroll >= transNum.eq([i]).offset().top - $(window).height() / 1.2){
-                transNum.eq([i]).addClass('active');
-            }
-        }   
-        
-        var contact = $(' .paging');
-        if (contact.length) {
-             if(wScroll >= contact.offset().top - $(window).height() / 1){
-                $('.trans-bg').addClass('up');
-            }
-            else {
-                $('.trans-bg').removeClass('up');
-            }
-        }
-        
-    }); 
-
-    $('.work-btn').on('click',function(){
-        $('.work-form').addClass('active');
-       /* $('.about').addClass('active');*/
-        var workCount = $('.work-form>div').length;
-        $('.close').css( 'pointer-events', 'none' );
-        for (i=0; i<workCount; i++){
-            $('.work-form>div>a').eq(i).children('div').css({'transition': '1.5s '+'0.'+i+'s ease-in-out'});
-        }
-        setTimeout(function() {
-               $('.close').css( 'pointer-events', '' );
-        }, 2000);
-    });
-    
-    
-   $('.about-btn').on('click',function(){
-        $('.about').addClass('active');
-        $('.close').css( 'pointer-events', 'none' );
-        setTimeout(function() {
-               $('.close').css( 'pointer-events', '' );
-        }, 2000);
-    });
-
-    $('.close').on('click',function(){
-        $('.work-form, .about').
-        
-        removeClass('active');
-        $('.work-btn, .about-btn').css( 'pointer-events', 'none' );
-        $('.work-form, .about').css( 'transition', '0.5s 2s' );
-        setTimeout(function() {
-            
-               $('.work-btn, .about-btn').css( 'pointer-events', '' );
-                $('.work-form, .about').css( 'transition', '' );
-        }, 2300);
-    });
-    
-
-    $('body, html').mousemove(function(e){
-        $('.cursor').css('left',e.pageX-15).css('top',e.pageY-15);
-    });
-
-    
-    var indicator = $('.indicator');
+var indicator = $('.indicator');
     var win = jQuery(window);
         if (indicator.length) {
         var moveIndicator = debounce(function() {
@@ -122,37 +24,113 @@ $(document).ready(function($) {
             if (callNow) func.apply(context, args);
             };
         };
-    win.on('resize scroll', moveIndicator);
+win.on('resize scroll', moveIndicator);
 
-    
-    window.addEventListener('load', function(){
-        
-        $('body').prepend("<div class='cursor'></div>");
-        
-        TweenMax.staggerTo('header h1, header nav li a',1,{opacity:1, x:0,ease: Power3.easeOut},0.2);
-        TweenMax.to('.trans',0.7,{x:0,y:0,delay: 0.4,ease: Power3.easeOut});
-        TweenMax.staggerTo('.h-text div p, .bot-text p',1.2,{opacity:1,y:0,rotation:0,delay: 0.2,ease: Power3.easeOut},0.2);
-        TweenMax.to('.scroll span',1.2,{width:'100%',delay: 1.1 ,ease: Power3.easeOut});
-        TweenMax.to('.scroll svg',0.8,{opacity:1,delay: 2});
-        TweenMax.to('.head-img .img img, .back a',0.8,{opacity:1,delay: 1});
-        TweenMax.to('.head-img h2',1,{opacity:1,y:0,rotation:0,delay:1,ease: Power3.easeOut});
-        /*TweenMax.to('.view .st0', 1.8, {opacity:1,strokeDashoffset:0, delay:0.4,ease:Linear.easeNone});*/
-        
-        for (var i=1; i<=5; i++){
-            var page = 'http://jooosg.cafe24.com/w'+i+'.html';
-            if (window.location.href == page) {
-                $('body').append("<div class='page-loader'><div class='pl1'></div><div class='pl2'></div><div class='pl3'></div></div>");
-                $('.page-loader').addClass('visible');
-            }
-            setTimeout(function() {
-                $('.page-loader').remove();
-            }, 1800);
 
+window.addEventListener('scroll',function(){
+    var wScroll = $(window).scrollTop();
+    var workNum = $('.work > div');
+    for(var i=0; i<workNum.length; i++){
+        if(wScroll >= workNum.eq([i]).offset().top - $(window).height() / 1.5){
+            workNum.eq([i]).addClass('view');
         }
+        else {
+            workNum.eq([i]).removeClass('view');
+        }
+    }
+        
+    var work = $('.work');
+    if (work.length) {
+       $('.h-text, .bot-text').css({ 'transform': 'translate3d(0px, ' + -pageYOffset/500 + '%, 0px) skew(0deg, '+pageYOffset/100 +'deg)', 'opacity': 1-pageYOffset/450});
+        $('.scroll').css({'opacity': 1-pageYOffset/450});
+        if(wScroll>= work.offset().top) {
+        $('.h-text').css({ 'transform': 'translate3d(0px, -2%, 0px) skew(0deg, 6deg)', 'opacity': 0});
+        }
+    }
 
-});   
+    var contact = $('.contact');
+    if (contact.length) {
+         if(wScroll >= contact.offset().top - $(window).height() / 1.8){
+            $('.trans-bg').addClass('up');
+        }
+        else {
+            $('.trans-bg').removeClass('up');
+        }
+    }
+
+    $('.head-img h2').css({ 'transform': 'translate3d(0, ' + pageYOffset/35 + 'vh, 0) '});
+        
+    var transNum = $('.transform');
+    for(var i=0; i<transNum.length; i++){
+        if(wScroll >= transNum.eq([i]).offset().top - $(window).height() / 1.2){
+            transNum.eq([i]).addClass('active');
+        }
+    }   
+
+    var contact = $(' .paging');
+    if (contact.length) {
+         if(wScroll >= contact.offset().top - $(window).height() / 1){
+            $('.trans-bg').addClass('up');
+        }
+        else {
+            $('.trans-bg').removeClass('up');
+        }
+    }
+        
+}); 
+
+$('.work-btn').on('click',function(){
+    $('.work-form').addClass('active');
+   /* $('.about').addClass('active');*/
+    var workCount = $('.work-form>div').length;
+    $('.close').css( 'pointer-events', 'none' );
+    for (i=0; i<workCount; i++){
+        $('.work-form>div>a').eq(i).children('div').css({'transition': '1.5s '+'0.'+i+'s ease-in-out'});
+    }
+    setTimeout(function() {
+           $('.close').css( 'pointer-events', '' );
+    }, 2000);
+});
     
+
+$('.close').on('click',function(){
+    $('.work-form, .about').removeClass('active');
+    $('.work-btn, .about-btn').css( 'pointer-events', 'none' );
+    $('.work-form, .about').css( 'transition', '0.5s 2s' );
+    setTimeout(function() {
+        $('.work-btn, .about-btn').css( 'pointer-events', '' );
+        $('.work-form, .about').css( 'transition', '' );
+    }, 2300);
+});
     
+
+$('body, html').mousemove(function(e){
+    $('.cursor').css('left',e.pageX-15).css('top',e.pageY-15);
 });
 
- 
+
+window.addEventListener('load', function(){
+    $('body').prepend("<div class='cursor'></div>");
+
+    TweenMax.staggerTo('header h1, header nav li a',1,{opacity:1, x:0,ease: Power3.easeOut},0.2);
+    TweenMax.to('.trans',0.7,{x:0,y:0,delay: 0.4,ease: Power3.easeOut});
+    TweenMax.staggerTo('.h-text div p, .bot-text p',1.2,{opacity:1,y:0,rotation:0,delay: 0.2,ease: Power3.easeOut},0.2);
+    TweenMax.to('.scroll span',1.2,{width:'100%',delay: 1.1 ,ease: Power3.easeOut});
+    TweenMax.to('.scroll svg',0.8,{opacity:1,delay: 2});
+    TweenMax.to('.head-img .img img, .back a',0.8,{opacity:1,delay: 1});
+    TweenMax.to('.head-img h2',1,{opacity:1,y:0,rotation:0,delay:1,ease: Power3.easeOut});
+    /*TweenMax.to('.view .st0', 1.8, {opacity:1,strokeDashoffset:0, delay:0.4,ease:Linear.easeNone});*/
+
+    for (var i=1; i<=5; i++){
+        var page = 'http://jooosg.cafe24.com/w'+i+'.html';
+        if (window.location.href == page) {
+            $('body').append("<div class='page-loader'><div class='pl1'></div><div class='pl2'></div><div class='pl3'></div></div>");
+            $('.page-loader').addClass('visible');
+        }
+        setTimeout(function() {
+            $('.page-loader').remove();
+        }, 1800);
+
+    }
+
+});   
