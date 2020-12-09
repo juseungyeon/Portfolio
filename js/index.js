@@ -1,20 +1,3 @@
-$(document).on('ready', function () {
-    UIPort.portAni('.intro, .work-page');
-    UIPort.pageTransition('.work-page');
-    UIPort.clickEvt01('.work-btn');
-    UIPort.clickEvt02('.close');
-    UIPort.indicator('.indicator');
-    UIPort.ieError('body');
-    $('body').prepend('<div class="cursor"></div>');
-    $('body, html').mousemove(function(e){
-        $('.cursor').css('left',e.pageX-15).css('top',e.pageY-15);
-    });
-    $(window).scroll(function(){
-        UIPort.mainScroll('.main-wrap');
-        UIPort.subScroll('.work-page');
-    });
-});
-
 
 var UIPort = {
     checkObj: function (obj) {
@@ -274,3 +257,20 @@ var UIPort = {
         event();
     },
 };
+
+$(document).on('ready', function () {
+    UIPort.portAni('.intro, .work-page');
+    UIPort.pageTransition('.work-page');
+    UIPort.clickEvt01('.work-btn');
+    UIPort.clickEvt02('.close');
+    UIPort.indicator('.indicator');
+    UIPort.ieError('body');
+    $('body').prepend('<div class="cursor"></div>');
+    $('body, html').mousemove(function(e){
+        $('.cursor').css('left',e.pageX-15).css('top',e.pageY-15);
+    });
+    $(window).scroll(function(){
+        UIPort.mainScroll('.main-wrap');
+        UIPort.subScroll('.work-page');
+    });
+});
