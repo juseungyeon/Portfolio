@@ -250,7 +250,7 @@ var UIPort = {
                     alert('IE는 지원하지 않습니다');
                 }
             }
-            $(window).on('load',loadError);
+            $(document).on('ready',loadError);
         }
 
         init(obj);
