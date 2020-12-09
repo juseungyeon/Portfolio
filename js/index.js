@@ -226,7 +226,7 @@ var UIPort = {
                     if (callNow) func.apply(context, args);
                 };
             };
-            win.on('resize scroll', moveIndicator);
+            $(window).on('resize scroll',moveIndicator);
         }
 
         init(obj);
@@ -258,7 +258,7 @@ var UIPort = {
     },
 };
 
-$(document).on('ready', function () {
+$(document).ready(function () {
     UIPort.portAni('.intro, .work-page');
     UIPort.pageTransition('.work-page');
     UIPort.clickEvt01('.work-btn');
