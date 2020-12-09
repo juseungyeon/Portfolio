@@ -258,7 +258,7 @@ var UIPort = {
     },
 };
 
-$(document).ready(function () {
+$(document).ready(function(){
     UIPort.portAni('.intro, .work-page');
     UIPort.pageTransition('.work-page');
     UIPort.clickEvt01('.work-btn');
