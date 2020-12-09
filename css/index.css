@@ -28,7 +28,7 @@ header h1 a {font-size:28px;line-height:48px;}
 header nav {float:right;}
 header nav li {overflow:hidden;display:inline-block;margin-left:25px;}
 header nav li a {opacity:0;display:block;transform:translateX(-150%);font-size:20px;font-weight:500;font-size:24px;line-height:48px;}
-header nav li a:before {content: "";opacity:0;position:absolute;z-index:-1;width:0;bottom:0;border:1px solid #111;transition:.3s;}
+header nav li a:before {content: "";opacity:0;position:absolute;z-index:-1;width:0;height:2px;bottom:0;background:#111;transition:.3s;}
 header nav li a:hover:before {opacity:1;width:100%;}
 .intro .h-text-wrap {position:absolute;top:50%;left:15vw;transform:translateY(-50%);}
 .intro .h-text {font-size:7.23vw;font-weight:700;line-height:112%;letter-spacing:3px;transition:.6s;}
@@ -174,7 +174,7 @@ header nav li a:hover:before {opacity:1;width:100%;}
 .active {opacity: 1;transform: translateY(0);}
 .paging {overflow:hidden;position:relative;height:30vh;margin-top:150px;}
 .paging a {position:relative;float:left;width:50%;text-align:center;font-size:5vw;line-height:30vh;transition: .3s;color:#333}
-.paging a:before  {content: "";opacity:0;position:absolute;top:50%;left: 50%;z-index:-1;width:0;transform: translate(-50%,-50%);border:1px solid #fff;transition: .3s;}
+.paging a:before  {content: "";opacity:0;position:absolute;top:50%;left: 50%;z-index:-1;width:0;height:2px;background:#fff;transform: translate(-50%,-50%);transition: .3s;}
 .paging a:hover {color:#fff;}
 .paging a:hover:before {opacity:1;width:30%;}
 .paging .trans-bg.up {transform: translateY(0);}
