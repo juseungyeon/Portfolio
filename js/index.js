@@ -74,7 +74,7 @@ var UIPort = {
             }
         }
         function event03(){
-            $('.head-img h2').css({ 'transform': 'translate3d(0, ' + pageYOffset/35 + 'vh, 0) '});
+            $('.head-img h2').css({ 'transform': 'translateY(' + pageYOffset/35 + 'vh) '});
         }
 
         init(obj);

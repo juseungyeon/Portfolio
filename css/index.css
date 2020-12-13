@@ -12,7 +12,7 @@ table { border-collapse:collapse; border-spacing:0;}
 input, select { vertical-align:middle; }
 label { cursor:pointer;}
 i,em,address { font-style:normal; font-weight:normal;}
-p,li,dd{ line-height:1;}
+strong{font-weight:normal;}
 .hidden{ position:absolute; left:-1000%; top:0; width:1px; height:1px; line-height:0; overflow:hidden;}
 .clear {*zoom:1;}
 .clear:before,.clear:after{display: table; content: "";}
@@ -112,40 +112,37 @@ header nav li a:hover:before {opacity:1;width:100%;}
 .work-list-wrap .list-con > div:nth-child(1) {left:-50%;}
 .work-list-wrap.active .list-con > div:nth-child(1) {left:0;}
 .work-list-wrap .list-con > div:nth-child(2) {right:-50%}
-.work-list-wrap.active .list-con >div:nth-child(2) {right:0;}
-.work-list-wrap .list-con > div > div {position:absolute;width:100%;height:100%;background-repeat:no-repeat;background-position:center;background-size:cover;}
-.work-list-wrap .list-con > div > div.right-bg {width:0;right:0;transition: .5s;}
-.work-list-wrap .list-con > div > div.left-bg {width:0;left:0;transition: .5s;}
-.work-list-wrap .list-con > div.w-right:hover .right-bg , 
-.work-list-wrap .list-con > div.w-left:hover .left-bg {width:100%;}
-.work-list-wrap .list-con > div.w-right:hover .right-con .right-box,
-.work-list-wrap .list-con > div.w-left:hover .left-con .left-box {color:#fff;}
-.work-list-wrap .right-con .right-box,
-.work-list-wrap .left-con .left-box {position:absolute;bottom:30px;transition: .5s;}
-.work-list-wrap .left-con .left-box {right:50px;text-align:right;}
-.work-list-wrap .right-con .right-box {left:50px}
-.work-list-wrap .right-con .right-box p:nth-child(1),
-.work-list-wrap .left-con .left-box p:nth-child(1) {margin-bottom:20px;font-size:20px;text-decoration:underline;}
-.work-list-wrap .right-con .right-box p:nth-child(2),
-.work-list-wrap .left-con .left-box p:nth-child(2) {margin-bottom:10px;font-size:50px;text-transform:uppercase}
-.work-list-wrap > [class*="work"]  div > div.right-bg,
-.work-list-wrap > [class*="work"]  div > div.left-bg {background:#a0cff7;}
-.main-wrap .close {position:absolute;top:30px;left:-80px;z-index:120;width:45px;height:45px;cursor:pointer;background:#fff;border-radius:50%;transition: .5s;}
-.active .close {left:30px;}
+.work-list-wrap.active .list-con > div:nth-child(2) {right:0;}
+.work-list-wrap .list-con > div > div {position:absolute;width:100%;height:100%;}
+.work-list-wrap .list-con [class*="-bg"] {width:0;background:#a0cff7;transition: .5s;}
+.work-list-wrap .list-con .left-bg {left:0;}
+.work-list-wrap .list-con .right-bg {right:0;}
+.work-list-wrap .list-con [class*="-con"] {z-index:10;} 
+.work-list-wrap .list-con .w-left:hover .left-bg,
+.work-list-wrap .list-con .w-right:hover .right-bg {width:100%;}
+.work-list-wrap .list-con .w-left:hover .left-box,
+.work-list-wrap .list-con .w-right:hover .right-box {color:#fff;}
+.work-list-wrap .list-con [class*="-box"] {position:absolute;bottom:30px;transition: .5s;}
+.work-list-wrap .list-con .left-box {right:50px;text-align:right;}
+.work-list-wrap .list-con .right-box {left:50px}
+.work-list-wrap .list-con span {display:block;margin-bottom:20px;font-size:20px;text-decoration:underline;}
+.work-list-wrap .list-con strong {display:block;margin-bottom:10px;font-size:50px;text-transform:uppercase}
+.work-list-wrap .work1 .left-con {background: url('../image/classo_nav.png') center no-repeat;background-size:cover;}
+.work-list-wrap .work2 .right-con {background: url('../image/cunning_nav.png') center no-repeat;background-size:cover;}
+.work-list-wrap .work3 .left-con {background: url('../image/kukdo_nav.png') center no-repeat;background-size:cover;}
+.work-list-wrap .work4 .right-con {background: url('../image/shin_nav.png') center no-repeat;background-size:cover;}
+.work-list-wrap .work5 .left-con {background: url('../image/hiot_nav.png') center no-repeat;background-size:cover;}
+.close {position:absolute;top:30px;left:-80px;z-index:120;width:45px;height:45px;cursor:pointer;background:#fff;border-radius:50%;transition: .5s;}
 .close:hover {transform: rotate(90deg);}
 .close i:nth-child(1), 
-.close i:nth-child(2) {position:absolute;top:21px;left:8px;width:30px;height:4px;background:#111;}
-.close i:nth-child(1) {transform:rotate(45deg);}
-.close i:nth-child(2) {transform:rotate(-45deg);}
+.close i:nth-child(2) {position:absolute;top:50%;left:50%;width:30px;height:4px;background:#111;}
+.close i:nth-child(1) {transform:translate(-50%,-50%) rotate(45deg);}
+.close i:nth-child(2) {transform:translate(-50%,-50%) rotate(-45deg);}
 .close i:nth-child(3),
 .close i:nth-child(4) {position:absolute;top:50%;left:50%;background:#fff;transform:translate(-50%, -50%);}
 .close i:nth-child(3) {width:13px;height:4px;}
 .close i:nth-child(4) {width:4px;height:13px;}
-.work-list-wrap .work1 .left-con {background-image: url('../image/classo_nav.png');}
-.work-list-wrap .work2 .right-con {background-image: url('../image/cunning_nav.png');}
-.work-list-wrap .work3 .left-con {background-image: url('../image/kukdo_nav.png');}
-.work-list-wrap .work4 .right-con {background-image: url('../image/shin_nav.png');}
-.work-list-wrap .work5 .left-con {background-image: url('../image/hiot_nav.png');}
+.active .close {left:30px;}
 
 /*w1,w2,w3,w4,w5*/
 .work-page i {font-size:38px;}
@@ -153,12 +150,12 @@ header nav li a:hover:before {opacity:1;width:100%;}
 .back a:hover i {animation: bounce .5s ease-in infinite alternate;}
 .head-img {overflow:hidden;position:relative;height:90vh;background:#fffff1;}
 .head-img .img img {opacity:0;position:absolute;top:50%;left:50%;transform: translate(-50%,-50%);}
-.head-img > div:nth-child(2) {position: absolute;top:50%;left:50%;transform: translate(-50%,-50%);}
-.head-img h2 {opacity:0;font-size:11vw;text-transform:uppercase;color:#1c1c1c;text-indent:50px;letter-spacing:50px;text-align:center;transform: translateY(150%) rotate(10deg);}
+.head-img h2 {opacity:0;display:flex;height:100%;justify-content:center;align-items:center;font-size:11vw;text-transform:uppercase;color:#1c1c1c;text-indent:75px;letter-spacing:50px;text-align:center;transform: translateY(100%) rotate(30deg);}
 .brief {background:#222;padding:5%;color:#fff;text-align:center;}
 .brief .project {padding-bottom:20px;margin:0 auto;width:200px;text-transform:uppercase;font-size:30px;font-weight:600;letter-spacing:5px;border-bottom:1px solid #333;}
 .brief .brief-txt{margin:30px 0 70px;line-height:30px;}
-.brief .description dl {display:inline-block;margin-right:50px;}
+.brief .description {display:flex;flex-wrap:wrap;justify-content:center;}
+.brief .description dl {margin-right:50px;}
 .brief .description dl:last-child {margin-right:0;}
 .brief .description dl dt {margin-bottom:20px;color:#555}
 .brief .description dl dd {margin-bottom:10px;font-size:14px;}
@@ -173,8 +170,9 @@ header nav li a:hover:before {opacity:1;width:100%;}
 .transform {opacity:0;transform: translateY(50px);transition: .8s;}
 .active {opacity: 1;transform: translateY(0);}
 .paging {overflow:hidden;position:relative;height:30vh;margin-top:150px;}
-.paging a {position:relative;float:left;width:50%;text-align:center;font-size:5vw;line-height:30vh;transition: .3s;color:#333}
-.paging a:before  {content: "";opacity:0;position:absolute;top:50%;left:50%;z-index:-1;width:0;height:2px;background:#fff;transform: translate(-50%,-50%);transition: .3s;}
+.paging .index {display:flex;}
+.paging a {position:relative;flex:1;text-align:center;font-size:5vw;line-height:30vh;transition: .3s;color:#333}
+.paging a:before  {content: "";opacity:0;position:absolute;top:50%;left:50%;width:0;height:2px;background:#fff;transform: translate(-50%,-50%);transition: .3s;}
 .paging a:hover {color:#fff;}
 .paging a:hover:before {opacity:1;width:30%;}
 .paging .trans-bg.up {transform: translateY(0);}
@@ -263,6 +261,9 @@ header nav li a:hover:before {opacity:1;width:100%;}
     .work .work-wrap.view .btn {right:-60px;}
     
     .trans-bg.up {transform: translateY(0);}
+    .contact .heart {width:75px;height:75px;}
+    .contact .heart:after {top:0px;left:38px;width:75px;height:75px;}
+    .contact .heart:before {top:-38px;left:0px;width:75px;height:75px;}
     .contact .contact-con {width:90%;}
     .contact .contact-txt {float:none;text-align:center;}
     .contact .contact-txt .touch-box p {margin-bottom:0;font-size:12vw;}
@@ -287,7 +288,7 @@ header nav li a:hover:before {opacity:1;width:100%;}
     .brief {padding:40px 3% 20px;}
     .brief .project {padding-bottom:15px;font-size:20px;}
     .brief .brief-txt {margin:20px 0 45px;font-size:14px;line-height:24px;}
-    .brief .description dl {float:left;width:50%;margin:0 0 20px 0;}
+    .brief .description dl {flex:0 50%;margin:0 0 20px 0;}
     .brief .description dl dd {margin-bottom:10px;font-size:12px;} 
     .paging {margin-top:5px;height:15vh;}
     .paging a {line-height:15vh;}
@@ -302,21 +303,18 @@ header nav li a:hover:before {opacity:1;width:100%;}
     .intro .scroll svg {width:40px;height:40px;transform: translate(95% , -50%);}
     .work .work-wrap .btn {width:125px;height:40px;line-height:40px;letter-spacing:1px;}
     .work .work-wrap.view .btn {right:-30px;}
-    .work-list-wrap > div,
-    .work-list-wrap > div > a > div {height:170px;}
-    .work-list-wrap .left-con .left-box {right:20px;}
-    .work-list-wrap .right-con .right-box {left:20px;}
-    .work-list-wrap .right-con .right-box p:nth-child(1),
-    .work-list-wrap .left-con .left-box p:nth-child(1) {margin-bottom:10px;font-size:15px;}
-    .work-list-wrap .right-con .right-box p:nth-child(2),
-    .work-list-wrap .left-con .left-box p:nth-child(2) {margin-bottom:5px;font-size:27px;}
-    .work-list-wrap .right-con .right-box p:nth-child(3),
-    .work-list-wrap .left-con .left-box p:nth-child(3) {font-size: 12px;}
-    .work-list-wrap .close {top:13px;width:25px;height:25px;}
+    .work-list-wrap > [class*="work"] ,
+    .work-list-wrap .list-con > div {height:170px;}
+    .work-list-wrap .list-con .left-box {right:20px;}
+    .work-list-wrap .list-con .right-box {left:20px;}
+    .work-list-wrap .list-con span {margin-bottom:10px;font-size:15px;}
+    .work-list-wrap .list-con strong {margin-bottom:5px;font-size:27px;}
+    .work-list-wrap .list-con p {font-size: 12px;}
+    .close {top:13px;width:25px;height:25px;}
     .close i:nth-child(1),
-    .close i:nth-child(2) {top: 11px;left:4px;width:18px;height:3px;}
-    .close i:nth-child(3) {height:3px;}
-    .close i:nth-child(4) {width:3px;}
-    .work-list-wrap.active .close {left:10px}
+    .close i:nth-child(2) {width:19px;height:3px;}
+    .close i:nth-child(3) {height:2px;}
+    .close i:nth-child(4) {width:2px;}
+    .active .close {left:10px}
 
 }
