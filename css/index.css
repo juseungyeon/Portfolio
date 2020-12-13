@@ -34,12 +34,12 @@ header nav li a:hover:before {opacity:1;width:100%;}
 .intro .h-text {font-size:7.23vw;font-weight:700;line-height:112%;letter-spacing:3px;transition:.6s;}
 .intro .h-text > div {overflow:hidden;}
 .intro .h-text div p {opacity:0;transform:translateY(150%) rotate(10deg);line-height:112%;}
-.intro .side-text .h-text-sub {overflow:hidden;position:absolute;top:50%;right:-39px;transform:rotate(90deg) translateY(-50%);}
-.intro .side-text .h-text-sub p {transform:translate(0,100%);color:#ccc; }
-.intro .side-text div:nth-child(2) {overflow:hidden;position:absolute;top:50%;left:54px;transform:translate(0,-50%);}
-.intro .side-text ul {transform:translate(110%,0);}
-.intro .side-text ul li {margin-bottom:25px;}
-.intro .side-text ul li a {font-size:17px;color:#bcbcbc;}
+.intro .side-text .h-sub-text {overflow:hidden;position:absolute;top:50%;right:-39px;transform:rotate(90deg) translateY(-50%);}
+.intro .side-text .h-sub-text p {transform:translate(0,100%);color:#ccc; }
+.intro .side-text .h-sub-link {overflow:hidden;position:absolute;top:50%;left:54px;transform:translate(0,-50%);}
+.intro .side-text .h-sub-link ul {transform:translate(110%,0);}
+.intro .side-text .h-sub-link li {margin-bottom:25px;}
+.intro .side-text .h-sub-link li a {font-size:17px;color:#bcbcbc;}
 .intro .bot-text {overflow:hidden;position:absolute;left:14vw;bottom:7vw;color:#cecece;}
 .intro .bot-text p {opacity:0;transform:translateY(150%) rotate(10deg);line-height:20px;}
 .intro .scroll {position:absolute;bottom:5.35vw;left:14vw;width:50vw}
@@ -229,7 +229,7 @@ header nav li a:hover:before {opacity:1;width:100%;}
 @media screen and (max-width:1280px){
     
     .intro .h-text p {font-size:11.2vw}
-    .intro .h-text-sub p {font-size:1.3vw}
+    .intro .h-sub-text p {font-size:1.3vw}
     .intro .scroll {width:68vw;}
     .work .svg-num {width:27vw;}
     .trans-bg.up {transform: translateY(10%);}
@@ -243,7 +243,7 @@ header nav li a:hover:before {opacity:1;width:100%;}
     
     header {padding:0 8vw}
     .intro .h-text p {margin-bottom:7vw;}
-    .intro .h-text-sub p {font-size:2.3vw;}
+    .intro .h-sub-text p {font-size:2.3vw;}
     .intro .h-text-wrap, .intro .bot-text , .intro .scroll{left:8vw;}
     .intro .bot-text {width:68vw}
     .intro .bot-text p {font-size:2vw;}
