@@ -82,9 +82,9 @@ header nav li a:hover:before {opacity:1;width:100%;}
 .contact .contact-con {position:absolute;top:55%;left:50%;width:68%;transform:translate(-50%,-50%);color:#333;font-weight:700;}
 .contact .contact-txt {position:relative;float:left;}
 .contact .contact-txt .touch-box {position:relative;}
-.contact .contact-txt .touch-box p {margin-bottom:77px;font-size:123px;}
-.contact .contact-txt .touch-box > div:hover {opacity:0;}
-.contact .contact-txt .touch-box > div:hover +.heart{opacity:1;}
+.contact .contact-txt .touch-box p {margin-bottom:77px;font-size:7.4vw;}
+.contact .contact-txt .touch-box:hover p {opacity:0;}
+.contact .contact-txt .touch-box:hover p +.heart{opacity:1;}
 .contact .contact-txt p:nth-child(2) {margin-bottom:10px;}
 .contact .contact-txt i {margin-right:12px;}
 .contact .form {float:right;width:36%;margin-right:6%;}
