@@ -261,9 +261,9 @@ header nav li a:hover:before {opacity:1;width:100%;}
     .work .work-wrap.view .btn {right:-60px;}
     
     .trans-bg.up {transform: translateY(0);}
-    .contact .heart {width:75px;height:75px;}
-    .contact .heart:after {top:0px;left:38px;width:75px;height:75px;}
-    .contact .heart:before {top:-38px;left:0px;width:75px;height:75px;}
+    .contact .heart {width:60px;height:60px;}
+    .contact .heart:after {top:0px;left:30px;width:60px;height:60px;}
+    .contact .heart:before {top:-30px;left:0px;width:60px;height:60px;}
     .contact .contact-con {width:90%;}
     .contact .contact-txt {float:none;text-align:center;}
     .contact .contact-txt .touch-box p {margin-bottom:0;font-size:12vw;}
