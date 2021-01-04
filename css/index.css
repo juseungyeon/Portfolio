@@ -74,8 +74,8 @@ header nav li a:hover:before {opacity:1;width:100%;}
 .work .work5 .img {background-image: url(../image/hiot.png);}
 .work .work-wrap .num {position:absolute;top:50%;right:0;width:300px;margin-top:-150px;transform:rotate(90deg);}
 .work .svg-num {position:absolute;right:0;top:50%;width:19vw;transform:translateY(-50%) rotate(90deg);}
-.work .svg-num path {opacity:0;stroke-dasharray:1000;fill:none;stroke:#d1d1d1;stroke-width:0.5;stroke-miterlimit:10;}
-.work .work-wrap.view path {animation: animate 1.9s cubic-bezier(0,0.23,1,.1) forwards;}
+.work .svg-num path {stroke-dasharray:300;stroke-dashoffset:300;fill:none;stroke:#d1d1d1;stroke-width:0.5;}
+.work .work-wrap.view path {animation: numline 1.2s 0.3s linear forwards;}
 
 /*contact-sec*/
 .contact {overflow:hidden;}
@@ -202,10 +202,9 @@ header nav li a:hover:before {opacity:1;width:100%;}
     50% {transform: scale(0.6) rotate(-45deg);}
 }
 
-@keyframes animate{
-    0% { opacity: 0; stroke-dashoffset:1000;}
-    30% {opacity: 10; stroke-dashoffset : 1000;}
-    100%{ opacity: 10; stroke-dashoffset:0;}
+@keyframes numline {
+    0% { stroke-dashoffset:300;}
+    100%{ stroke-dashoffset:0;}
 }
 
 @keyframes hidden {
