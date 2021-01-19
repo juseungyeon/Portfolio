@@ -60,9 +60,9 @@ header nav li a:hover:before {opacity:1;width:100%;}
 .work [class*="work-item"].view .thumb-box {opacity:1;right:-112px;}
 .work .work-con .btn {opacity:0;position:absolute;right:-150px;bottom:0;width:225px;height:62px;background:rgba(0,0,0,0.7);line-height:62px;text-align:center;text-transform:uppercase;letter-spacing:3px;color:#fff;transition:0.5s .6s;}
 .work [class*="work-item"].view .btn {opacity:1;right:-112px;}
-.work .work-con .info-txt {overflow:hidden;position:absolute;top:14.5vh;right:-30px;padding-left:5px;transform:rotate(90deg);transform-origin:100%;color:#888;}
-.work .work-con .info-txt span {display:block;transform:translateY(-30px);transition:transform 1s 0.8s;}
-.work [class*="work-item"].view .info-txt span {transform:translateY(0);}
+.work .work-con .info-text {overflow:hidden;position:absolute;top:14.5vh;right:-30px;padding-left:5px;transform:rotate(90deg);transform-origin:100%;color:#888;}
+.work .work-con .info-text span {display:block;transform:translateY(-30px);transition:transform 1s 0.8s;}
+.work [class*="work-item"].view .info-text span {transform:translateY(0);}
 .work .work-item1 .thumb-box {background-image: url(../image/classo.png);}
 .work .work-item2 .thumb-box {background-image: url(../image/cunning.png);}
 .work .work-item3 .thumb-box {background-image: url(../image/kukdo.png);}
@@ -75,13 +75,13 @@ header nav li a:hover:before {opacity:1;width:100%;}
 /*contact-sec*/
 .contact {overflow:hidden;}
 .contact .contact-con {position:absolute;top:55%;left:50%;width:68%;transform:translate(-50%,-50%);color:#333;font-weight:700;}
-.contact .contact-txt {position:relative;float:left;}
-.contact .contact-txt .touch-box {position:relative;}
-.contact .contact-txt .touch-box p {margin-bottom:77px;font-size:7.4vw;}
-.contact .contact-txt .touch-box:hover p {opacity:0;}
-.contact .contact-txt .touch-box:hover p +.heart{opacity:1;}
-.contact .contact-txt p:nth-child(2) {margin-bottom:10px;}
-.contact .contact-txt i {margin-right:12px;}
+.contact .contact-text {position:relative;float:left;}
+.contact .contact-text .touch-box {position:relative;}
+.contact .contact-text .touch-box p {margin-bottom:77px;font-size:7.4vw;}
+.contact .contact-text .touch-box:hover p {opacity:0;}
+.contact .contact-text .touch-box:hover p +.heart{opacity:1;}
+.contact .contact-text p:nth-child(2) {margin-bottom:10px;}
+.contact .contact-text i {margin-right:12px;}
 .contact .form {float:right;width:36%;margin-right:6%;}
 .contact .form > div {position:relative;margin-bottom:25px;text-align:left;font-size:21px;width:100%;}
 .contact .form label {opacity:0;position:absolute;top:4px;left:4px;font-size:19px;}
@@ -98,34 +98,34 @@ header nav li a:hover:before {opacity:1;width:100%;}
 .trans-bg {position:absolute;top:0;left:0;z-index:-1;width:100%;height:100vh;transform:translateY(100%);background:#000;transition: transform .9s cubic-bezier(.785,.135,.15,.86);}
 .trans-bg.up {transform: translateY(18%);}
 
-/*work-list-area-sec*/
-.main-wrap .work-list-area,
+/*work-list-sec*/
+.main-wrap .work-list,
 .main-wrap .about {position:fixed;top:0;left:0;z-index:100;width:100%;height:0;overflow:auto;transition: .5s;}
-.work-list-area.active {width:100%;height:100%;}
-.work-list-area > [class*="list-item"] {width:100%;height:290px;transition: .5s;}
-.work-list-area .list-con > div { position:absolute;width:50%;height:290px;background:#fafafa;}
-.work-list-area .list-con .list-thumb:nth-of-type(odd),
-.work-list-area .list-con .list-text:nth-of-type(odd) {left:-50%;}
-.work-list-area .list-con .list-thumb:nth-of-type(even),
-.work-list-area .list-con .list-text:nth-of-type(even) {right:-50%}
-.work-list-area.active .list-con .list-thumb:nth-of-type(odd),
-.work-list-area.active .list-con .list-text:nth-of-type(odd) {left:0;}
-.work-list-area.active .list-con .list-thumb:nth-of-type(even),
-.work-list-area.active .list-con .list-text:nth-of-type(even) {right:0;}
-.work-list-area .list-con .thumb-con {position:absolute;width:100%;height:100%;}
-.work-list-area .list-con .text-con {position:absolute;left:50px;bottom:50px;transition: .5s;}
-.work-list-area .list-con .list-text:nth-of-type(odd) .text-con {right:50px;left:auto;text-align:right;}
-.work-list-area .list-con .list-text:before {content:"";display:block;position:absolute;top:0;width:0;height:100%;background:#a0cff7;transition: .5s;}
-.work-list-area .list-con .list-text:nth-of-type(even):before {right:0;}
-.work-list-area .list-con .list-text:hover:before {width:100%;}
-.work-list-area .list-con .list-text:hover .text-con {color:#fff;}
-.work-list-area .list-con span {display:block;margin-bottom:20px;font-size:20px;text-decoration:underline;}
-.work-list-area .list-con strong {display:block;margin-bottom:10px;font-size:50px;text-transform:uppercase}
-.work-list-area .list-item1 .thumb-con {background: url('../image/classo_nav.png') center no-repeat;background-size:cover;}
-.work-list-area .list-item2 .thumb-con {background: url('../image/cunning_nav.png') center no-repeat;background-size:cover;}
-.work-list-area .list-item3 .thumb-con {background: url('../image/kukdo_nav.png') center no-repeat;background-size:cover;}
-.work-list-area .list-item4 .thumb-con {background: url('../image/shin_nav.png') center no-repeat;background-size:cover;}
-.work-list-area .list-item5 .thumb-con {background: url('../image/hiot_nav.png') center no-repeat;background-size:cover;}
+.work-list.active {width:100%;height:100%;}
+.work-list > [class*="list-item"] {width:100%;height:290px;transition: .5s;}
+.work-list .list-con > div { position:absolute;width:50%;height:290px;background:#fafafa;}
+.work-list .list-con .list-thumb:nth-of-type(odd),
+.work-list .list-con .list-text:nth-of-type(odd) {left:-50%;}
+.work-list .list-con .list-thumb:nth-of-type(even),
+.work-list .list-con .list-text:nth-of-type(even) {right:-50%}
+.work-list.active .list-con .list-thumb:nth-of-type(odd),
+.work-list.active .list-con .list-text:nth-of-type(odd) {left:0;}
+.work-list.active .list-con .list-thumb:nth-of-type(even),
+.work-list.active .list-con .list-text:nth-of-type(even) {right:0;}
+.work-list .list-con .thumb-con {position:absolute;width:100%;height:100%;}
+.work-list .list-con .text-con {position:absolute;left:50px;bottom:50px;transition: .5s;}
+.work-list .list-con .list-text:nth-of-type(odd) .text-con {right:50px;left:auto;text-align:right;}
+.work-list .list-con .list-text:before {content:"";display:block;position:absolute;top:0;width:0;height:100%;background:#a0cff7;transition: .5s;}
+.work-list .list-con .list-text:nth-of-type(even):before {right:0;}
+.work-list .list-con .list-text:hover:before {width:100%;}
+.work-list .list-con .list-text:hover .text-con {color:#fff;}
+.work-list .list-con span {display:block;margin-bottom:20px;font-size:20px;text-decoration:underline;}
+.work-list .list-con strong {display:block;margin-bottom:10px;font-size:50px;text-transform:uppercase}
+.work-list .list-item1 .thumb-con {background: url('../image/classo_nav.png') center no-repeat;background-size:cover;}
+.work-list .list-item2 .thumb-con {background: url('../image/cunning_nav.png') center no-repeat;background-size:cover;}
+.work-list .list-item3 .thumb-con {background: url('../image/kukdo_nav.png') center no-repeat;background-size:cover;}
+.work-list .list-item4 .thumb-con {background: url('../image/shin_nav.png') center no-repeat;background-size:cover;}
+.work-list .list-item5 .thumb-con {background: url('../image/hiot_nav.png') center no-repeat;background-size:cover;}
 .close {position:absolute;top:30px;left:-80px;z-index:120;width:45px;height:45px;cursor:pointer;background:#fff;border-radius:50%;transition: .5s;}
 .close:hover {transform: rotate(90deg);}
 .close i:nth-child(1), 
@@ -147,7 +147,7 @@ header nav li a:hover:before {opacity:1;width:100%;}
 .head-img h2 {opacity:0;display:flex;height:100%;justify-content:center;align-items:center;font-size:11vw;text-transform:uppercase;color:#1c1c1c;text-indent:75px;letter-spacing:50px;text-align:center;transform: translateY(100%) rotate(30deg);}
 .brief {background:#222;padding:5%;color:#fff;text-align:center;}
 .brief .project {padding-bottom:20px;margin:0 auto;width:200px;text-transform:uppercase;font-size:30px;font-weight:600;letter-spacing:5px;border-bottom:1px solid #333;}
-.brief .brief-txt {margin:30px 0 70px;line-height:30px;}
+.brief .brief-text {margin:30px 0 70px;line-height:30px;}
 .brief .description {display:flex;flex-wrap:wrap;justify-content:center;}
 .brief .description dl {margin-right:50px;}
 .brief .description dl:last-child {margin-right:0;}
@@ -246,8 +246,8 @@ header nav li a:hover:before {opacity:1;width:100%;}
     .work .work-con:after {display:none;}
     .work .work-con .work-title h2 {font-size: 12vw;}
     .work .work-con .work-title h2.small {font-size:10vw;}
-    .work .work-con .info-txt {right:-17px;}
-    .work .work-con .info-txt span {font-size:12px;}
+    .work .work-con .info-text {right:-17px;}
+    .work .work-con .info-text span {font-size:12px;}
     .work .work-con .btn {right:-150px;bottom:6vh;width:150px;height:50px;line-height:50px;font-size:12px;}
     .work [class*="work-item"].view .btn {right:-60px;}
     .work .svg-num {top:auto;bottom:20vh;right:13px;width:27vw;transform:translateY(0) rotate(0);}
@@ -257,10 +257,10 @@ header nav li a:hover:before {opacity:1;width:100%;}
     .contact .heart:after {top:0px;left:30px;width:60px;height:60px;}
     .contact .heart:before {top:-30px;left:0px;width:60px;height:60px;}
     .contact .contact-con {width:90%;}
-    .contact .contact-txt {float:none;text-align:center;}
-    .contact .contact-txt .touch-box p {margin-bottom:0;font-size:12vw;}
-    .contact .contact-txt p:nth-child(2),
-    .contact .contact-txt p:nth-child(3) {display:none;}
+    .contact .contact-text {float:none;text-align:center;}
+    .contact .contact-text .touch-box p {margin-bottom:0;font-size:12vw;}
+    .contact .contact-text p:nth-child(2),
+    .contact .contact-text p:nth-child(3) {display:none;}
     .contact .form {float:none;width:85%;margin:35px auto 23px;}
     .contact .form > div {margin-bottom:17px;}
     .contact .form label{font-size:14px;}
@@ -279,7 +279,7 @@ header nav li a:hover:before {opacity:1;width:100%;}
     .content div {margin-bottom:20px;}
     .brief {padding:40px 3% 20px;}
     .brief .project {padding-bottom:15px;font-size:20px;}
-    .brief .brief-txt {margin:20px 0 45px;font-size:14px;line-height:24px;}
+    .brief .brief-text {margin:20px 0 45px;font-size:14px;line-height:24px;}
     .brief .description dl {flex:0 50%;margin:0 0 20px 0;}
     .brief .description dl dd {margin-bottom:10px;font-size:12px;} 
     .paging {margin-top:5px;height:15vh;}
@@ -296,13 +296,13 @@ header nav li a:hover:before {opacity:1;width:100%;}
     .work .work-con .btn {width:125px;height:40px;line-height:40px;letter-spacing:1px;}
     .work [class*="work-item"].view .btn {right:-30px;}
     .work .svg-num path {stroke-width:0.8;}
-    .work-list-area > [class*="list-item"],
-    .work-list-area .list-con > div {height:170px;}
-    .work-list-area .list-con .text-con {left:20px;bottom:20px;}
-    .work-list-area .list-con .list-text:nth-of-type(odd) .text-con {right:20px;}
-    .work-list-area .list-con span {margin-bottom:10px;font-size:15px;}
-    .work-list-area .list-con strong {margin-bottom:5px;font-size:27px;}
-    .work-list-area .list-con p {font-size: 12px;}
+    .work-list > [class*="list-item"],
+    .work-list .list-con > div {height:170px;}
+    .work-list .list-con .text-con {left:20px;bottom:20px;}
+    .work-list .list-con .list-text:nth-of-type(odd) .text-con {right:20px;}
+    .work-list .list-con span {margin-bottom:10px;font-size:15px;}
+    .work-list .list-con strong {margin-bottom:5px;font-size:27px;}
+    .work-list .list-con p {font-size: 12px;}
     .close {top:13px;width:25px;height:25px;}
     .close i:nth-child(1),
     .close i:nth-child(2) {width:19px;height:3px;}
