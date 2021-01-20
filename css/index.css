@@ -10,6 +10,7 @@ a, a:hover, a:active{text-decoration:none; color: #111}
 input, textarea {color: #fff; font-weight: 500; border-radius: 0;}
 table { border-collapse:collapse; border-spacing:0;}
 input, select { vertical-align:middle; }
+button {background:none;font-family:inherit;font-size:1em;outline:none;}
 label { cursor:pointer;}
 i,em,address { font-style:normal; font-weight:normal;}
 strong{font-weight:normal;}
@@ -24,9 +25,50 @@ header h1 {opacity:0;transform:translateX(-150%);}
 header h1 a {font-size:28px;line-height:48px;}
 header nav {float:right;}
 header nav li {overflow:hidden;display:inline-block;margin-left:25px;}
-header nav li a {opacity:0;display:block;transform:translateX(-150%);font-size:20px;font-weight:500;font-size:24px;line-height:48px;}
-header nav li a:before {content: "";opacity:0;position:absolute;z-index:-1;bottom:0;width:0;height:2px;background:#111;transition:.3s;}
-header nav li a:hover:before {opacity:1;width:100%;}
+header nav li .work-btn {opacity:0;display:block;transform:translateX(-150%);font-size:20px;font-weight:500;font-size:24px;line-height:48px;}
+header nav li .work-btn:before {content: "";opacity:0;position:absolute;z-index:-1;bottom:0;width:0;height:2px;background:#111;transition:.3s;}
+header nav li .work-btn:hover:before {opacity:1;width:100%;}
+/*work-list-sec*/
+.main-wrap .work-list,
+.main-wrap .about {position:fixed;top:0;left:0;z-index:100;width:100%;height:0;overflow:auto;transition: .5s;}
+.work-list.active {width:100%;height:100%;}
+.work-list > [class*="list-item"] {width:100%;height:290px;transition: .5s;}
+.work-list .list-con > div { position:absolute;width:50%;height:290px;background:#fafafa;}
+.work-list .list-con .list-thumb:nth-of-type(odd),
+.work-list .list-con .list-text:nth-of-type(odd) {left:-50%;}
+.work-list .list-con .list-thumb:nth-of-type(even),
+.work-list .list-con .list-text:nth-of-type(even) {right:-50%}
+.work-list.active .list-con .list-thumb:nth-of-type(odd),
+.work-list.active .list-con .list-text:nth-of-type(odd) {left:0;}
+.work-list.active .list-con .list-thumb:nth-of-type(even),
+.work-list.active .list-con .list-text:nth-of-type(even) {right:0;}
+.work-list .list-con .thumb-con {position:absolute;width:100%;height:100%;}
+.work-list .list-con .text-con {position:absolute;left:50px;bottom:50px;transition: .5s;}
+.work-list .list-con .list-text:nth-of-type(odd) .text-con {right:50px;left:auto;text-align:right;}
+.work-list .list-con .list-text:before {content:"";display:block;position:absolute;top:0;width:0;height:100%;background:#a0cff7;transition: .5s;}
+.work-list .list-con .list-text:nth-of-type(even):before {right:0;}
+.work-list .list-con .list-text:hover:before {width:100%;}
+.work-list .list-con .list-text:hover .text-con {color:#fff;}
+.work-list .list-con span {display:block;margin-bottom:20px;font-size:20px;text-decoration:underline;}
+.work-list .list-con strong {display:block;margin-bottom:10px;font-size:50px;text-transform:uppercase}
+.work-list .list-item1 .thumb-con {background: url('../image/classo_nav.png') center no-repeat;background-size:cover;}
+.work-list .list-item2 .thumb-con {background: url('../image/cunning_nav.png') center no-repeat;background-size:cover;}
+.work-list .list-item3 .thumb-con {background: url('../image/kukdo_nav.png') center no-repeat;background-size:cover;}
+.work-list .list-item4 .thumb-con {background: url('../image/shin_nav.png') center no-repeat;background-size:cover;}
+.work-list .list-item5 .thumb-con {background: url('../image/hiot_nav.png') center no-repeat;background-size:cover;}
+.close {position:absolute;top:30px;left:-80px;z-index:120;width:45px;height:45px;cursor:pointer;background:#fff;border-radius:50%;transition: .5s;}
+.close:hover {transform: rotate(90deg);}
+.close i:nth-child(1), 
+.close i:nth-child(2) {position:absolute;top:50%;left:50%;width:30px;height:4px;background:#111;}
+.close i:nth-child(1) {transform:translate(-50%,-50%) rotate(45deg);}
+.close i:nth-child(2) {transform:translate(-50%,-50%) rotate(-45deg);}
+.close i:nth-child(3),
+.close i:nth-child(4) {position:absolute;top:50%;left:50%;background:#fff;transform:translate(-50%, -50%);}
+.close i:nth-child(3) {width:13px;height:4px;}
+.close i:nth-child(4) {width:4px;height:13px;}
+.active .close {left:30px;}
+
+/* intro-sec */
 .intro .h-text-wrap {position:absolute;top:50%;left:15vw;transform:translateY(-50%);}
 .intro .h-text {font-size:7.23vw;font-weight:700;line-height:112%;letter-spacing:3px;transition:.6s;}
 .intro .h-text > div {overflow:hidden;}
@@ -97,46 +139,6 @@ header nav li a:hover:before {opacity:1;width:100%;}
 .contact .heart:before {content: "";position:absolute;top:-75px;left:0px;width:150px;height:150px;background-color:#333;border-radius:50%;}
 .trans-bg {position:absolute;top:0;left:0;z-index:-1;width:100%;height:100vh;transform:translateY(100%);background:#000;transition: transform .9s cubic-bezier(.785,.135,.15,.86);}
 .trans-bg.up {transform: translateY(18%);}
-
-/*work-list-sec*/
-.main-wrap .work-list,
-.main-wrap .about {position:fixed;top:0;left:0;z-index:100;width:100%;height:0;overflow:auto;transition: .5s;}
-.work-list.active {width:100%;height:100%;}
-.work-list > [class*="list-item"] {width:100%;height:290px;transition: .5s;}
-.work-list .list-con > div { position:absolute;width:50%;height:290px;background:#fafafa;}
-.work-list .list-con .list-thumb:nth-of-type(odd),
-.work-list .list-con .list-text:nth-of-type(odd) {left:-50%;}
-.work-list .list-con .list-thumb:nth-of-type(even),
-.work-list .list-con .list-text:nth-of-type(even) {right:-50%}
-.work-list.active .list-con .list-thumb:nth-of-type(odd),
-.work-list.active .list-con .list-text:nth-of-type(odd) {left:0;}
-.work-list.active .list-con .list-thumb:nth-of-type(even),
-.work-list.active .list-con .list-text:nth-of-type(even) {right:0;}
-.work-list .list-con .thumb-con {position:absolute;width:100%;height:100%;}
-.work-list .list-con .text-con {position:absolute;left:50px;bottom:50px;transition: .5s;}
-.work-list .list-con .list-text:nth-of-type(odd) .text-con {right:50px;left:auto;text-align:right;}
-.work-list .list-con .list-text:before {content:"";display:block;position:absolute;top:0;width:0;height:100%;background:#a0cff7;transition: .5s;}
-.work-list .list-con .list-text:nth-of-type(even):before {right:0;}
-.work-list .list-con .list-text:hover:before {width:100%;}
-.work-list .list-con .list-text:hover .text-con {color:#fff;}
-.work-list .list-con span {display:block;margin-bottom:20px;font-size:20px;text-decoration:underline;}
-.work-list .list-con strong {display:block;margin-bottom:10px;font-size:50px;text-transform:uppercase}
-.work-list .list-item1 .thumb-con {background: url('../image/classo_nav.png') center no-repeat;background-size:cover;}
-.work-list .list-item2 .thumb-con {background: url('../image/cunning_nav.png') center no-repeat;background-size:cover;}
-.work-list .list-item3 .thumb-con {background: url('../image/kukdo_nav.png') center no-repeat;background-size:cover;}
-.work-list .list-item4 .thumb-con {background: url('../image/shin_nav.png') center no-repeat;background-size:cover;}
-.work-list .list-item5 .thumb-con {background: url('../image/hiot_nav.png') center no-repeat;background-size:cover;}
-.close {position:absolute;top:30px;left:-80px;z-index:120;width:45px;height:45px;cursor:pointer;background:#fff;border-radius:50%;transition: .5s;}
-.close:hover {transform: rotate(90deg);}
-.close i:nth-child(1), 
-.close i:nth-child(2) {position:absolute;top:50%;left:50%;width:30px;height:4px;background:#111;}
-.close i:nth-child(1) {transform:translate(-50%,-50%) rotate(45deg);}
-.close i:nth-child(2) {transform:translate(-50%,-50%) rotate(-45deg);}
-.close i:nth-child(3),
-.close i:nth-child(4) {position:absolute;top:50%;left:50%;background:#fff;transform:translate(-50%, -50%);}
-.close i:nth-child(3) {width:13px;height:4px;}
-.close i:nth-child(4) {width:4px;height:13px;}
-.active .close {left:30px;}
 
 /*w1,w2,w3,w4,w5*/
 .work-page i {font-size:38px;}
@@ -289,8 +291,8 @@ header nav li a:hover:before {opacity:1;width:100%;}
 @media screen and (max-width:520px){
 
     header h1 a {font-size:22px;}
-    header nav li a {font-size:15px;letter-spacing:-.5px;}
-    header nav li a:before {bottom:10px;}
+    header nav li .work-btn {font-size:15px;letter-spacing:-.5px;}
+    header nav li .work-btn:before {bottom:10px;}
     .intro .bot-text p {line-height:16px;}
     .intro .scroll-wrap svg {width:40px;height:40px;transform: translate(95% , -50%);}
     .work .work-con .btn {width:125px;height:40px;line-height:40px;letter-spacing:1px;}

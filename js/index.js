@@ -121,11 +121,8 @@ var UIPort = {
         }
 
         function event(){
-            var page = 'http://jooosg.cafe24.com/p1/w';
-            if (page) {
-                $('body').append("<div class='page-loader'><div class='pl1'></div><div class='pl2'></div><div class='pl3'></div></div>");
-                $('.page-loader').addClass('visible');
-            }
+            $('body').append("<div class='page-loader'><div class='pl1'></div><div class='pl2'></div><div class='pl3'></div></div>");
+            $('.page-loader').addClass('visible');
             setTimeout(function() {
                 $('.page-loader').remove();
             }, 1800);
@@ -135,7 +132,7 @@ var UIPort = {
         event();
     },
 
-    clickEvt01: function (obj) {
+    menuOpen: function (obj) {
         if (!UIPort.checkObj(obj)) {
             return;
         }
@@ -149,8 +146,8 @@ var UIPort = {
                 $('body').css('overflow-y','hidden');
                 $('.work-list').addClass('active');
                 $('.close').css( 'pointer-events', 'none' );
-                var workCount = $('.work-list>div').length;
-                for (i=0; i<workCount; i++){
+                var workCount = $('.work-list>div');
+                for (i=0; i<workCount.length; i++){
                     $('.list-con').eq(i).children('div').css({'transition': '1.5s '+'0.'+i+'s ease-in-out'});
                 }
                 setTimeout(function() {
@@ -164,7 +161,7 @@ var UIPort = {
     },
 
     
-    clickEvt02: function (obj) {
+    menuClose: function (obj) {
         if (!UIPort.checkObj(obj)) {
             return;
         }
@@ -260,8 +257,8 @@ var UIPort = {
 $(document).ready(function(){
     UIPort.portAni('.intro, .work-page');
     UIPort.pageTransition('.work-page');
-    UIPort.clickEvt01('.work-btn');
-    UIPort.clickEvt02('.close');
+    UIPort.menuOpen('.work-btn');
+    UIPort.menuClose('.close');
     UIPort.indicator('.indicator');
     UIPort.ieError('body');
     $('body').prepend('<div class="cursor"></div>');
