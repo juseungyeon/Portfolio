@@ -251,7 +251,7 @@ $(document).ready(function(){
     $('body, html').mousemove(function(e){
         $('.cursor').css('left',e.pageX-15).css('top',e.pageY-15);
     });
-    $(window).scroll(function(){
+    $(window).scroll(function(){ 
         UIPort.mainScroll('.main-wrap');
         UIPort.subScroll('.work-page');
     });
