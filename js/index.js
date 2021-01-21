@@ -10,6 +10,7 @@ var UIPort = {
         }
 
         var wScroll = $(window).scrollTop();
+
         function init(obj) {
             $main = $(obj);
             $work = $main.find('.work');
@@ -52,6 +53,7 @@ var UIPort = {
         }
 
         var wScroll = $(window).scrollTop();
+        
         function init(obj) {
             $sub = $(obj);
             $showCon = $sub.find('.transform');
@@ -132,53 +134,40 @@ var UIPort = {
         event();
     },
 
-    menuOpen: function (obj) {
+    menuToggle: function (obj) {
         if (!UIPort.checkObj(obj)) {
             return;
         }
 
         function init(obj) {
             $open = $(obj);
+            $body = $('body');
+            $listEl = $body.find('.work-list');
+            $close = $listEl.find('.close');
         }
 
         function event() {
             $open.on('click',function(){
-                $('body').css('overflow-y','hidden');
-                $('.work-list').addClass('active');
-                $('.close').css( 'pointer-events', 'none' );
+                $body.css('overflow-y','hidden');
+                $listEl.addClass('active');
+                $close.css( 'pointer-events', 'none');
                 var workCount = $('.work-list>div');
                 for (i=0; i<workCount.length; i++){
                     $('.list-con').eq(i).children('div').css({'transition': '1.5s '+'0.'+i+'s ease-in-out'});
                 }
                 setTimeout(function() {
-                       $('.close').css( 'pointer-events', '' );
-                }, 2000);
+                    $close.css( 'pointer-events', '');
+                }, 1500);
             });
-        }
 
-        init(obj);
-        event();
-    },
-
-    
-    menuClose: function (obj) {
-        if (!UIPort.checkObj(obj)) {
-            return;
-        }
-
-        function init(obj) {
-            $close = $(obj);
-        }
-
-        function event() {
             $close.on('click',function(){
-                $('body').css('overflow-y','');
-                $('.work-list').removeClass('active');
-                $('.work-btn').css( 'pointer-events', 'none');
-                $('.work-list').css( 'transition', '0.5s 2s');
+                $body.css('overflow-y','');
+                $listEl.removeClass('active');
+                $open.css( 'pointer-events', 'none');
+                $listEl.css( 'transition', '0.5s 2s');
                 setTimeout(function() {
-                    $('.work-btn').css( 'pointer-events', '' );
-                    $('.work-list').css( 'transition', '' );
+                    $open.css( 'pointer-events', '');
+                    $listEl.css( 'transition', '');
                 }, 2300);
             });
         }
@@ -186,7 +175,6 @@ var UIPort = {
         init(obj);
         event();
     },
-
 
     indicator : function(obj){
         if (!UIPort.checkObj(obj)) {
@@ -243,7 +231,6 @@ var UIPort = {
                 if((navigator.appName == 'Netscape' && navigator.userAgent.search('Trident') != -1) || (agent.indexOf("msie") != -1)){
                     $('body').css('display','none');
                     alert('IE는 지원하지 않습니다');
-                    alert('IE는 지원하지 않습니다');
                 }
             }
             $(document).on('ready',loadError);
@@ -257,8 +244,7 @@ var UIPort = {
 $(document).ready(function(){
     UIPort.portAni('.intro, .work-page');
     UIPort.pageTransition('.work-page');
-    UIPort.menuOpen('.work-btn');
-    UIPort.menuClose('.close');
+    UIPort.menuToggle('.work-btn');
     UIPort.indicator('.indicator');
     UIPort.ieError('body');
     $('body').prepend('<div class="cursor"></div>');
