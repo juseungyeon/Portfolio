@@ -34,19 +34,19 @@ header nav li .work-btn:hover:before {opacity:1;width:100%;}
 .work-list.active {width:100%;height:100%;}
 .work-list > [class*="list-item"] {width:100%;height:290px;transition: .5s;}
 .work-list .list-con > div { position:absolute;width:50%;height:290px;background:#fafafa;}
-.work-list .list-con .list-thumb:nth-of-type(odd),
-.work-list .list-con .list-text:nth-of-type(odd) {left:-50%;}
-.work-list .list-con .list-thumb:nth-of-type(even),
-.work-list .list-con .list-text:nth-of-type(even) {right:-50%}
-.work-list.active .list-con .list-thumb:nth-of-type(odd),
-.work-list.active .list-con .list-text:nth-of-type(odd) {left:0;}
-.work-list.active .list-con .list-thumb:nth-of-type(even),
-.work-list.active .list-con .list-text:nth-of-type(even) {right:0;}
+.work-list .list-con .list-thumb:nth-child(odd),
+.work-list .list-con .list-text:nth-child(odd) {left:-50%;}
+.work-list .list-con .list-thumb:nth-child(even),
+.work-list .list-con .list-text:nth-child(even) {right:-50%}
+.work-list.active .list-con .list-thumb:nth-child(odd),
+.work-list.active .list-con .list-text:nth-child(odd) {left:0;}
+.work-list.active .list-con .list-thumb:nth-child(even),
+.work-list.active .list-con .list-text:nth-child(even) {right:0;}
 .work-list .list-con .thumb-con {position:absolute;width:100%;height:100%;}
 .work-list .list-con .text-con {position:absolute;left:50px;bottom:50px;transition: .5s;}
-.work-list .list-con .list-text:nth-of-type(odd) .text-con {right:50px;left:auto;text-align:right;}
+.work-list .list-con .list-text:nth-child(odd) .text-con {right:50px;left:auto;text-align:right;}
 .work-list .list-con .list-text:before {content:"";display:block;position:absolute;top:0;width:0;height:100%;background:#a0cff7;transition: .5s;}
-.work-list .list-con .list-text:nth-of-type(even):before {right:0;}
+.work-list .list-con .list-text:nth-child(even):before {right:0;}
 .work-list .list-con .list-text:hover:before {width:100%;}
 .work-list .list-con .list-text:hover .text-con {color:#fff;}
 .work-list .list-con span {display:block;margin-bottom:20px;font-size:20px;text-decoration:underline;}
