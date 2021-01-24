@@ -147,29 +147,37 @@ var UIPort = {
         }
 
         function event() {
-            $open.on('click',function(){
-                $body.css('overflow-y','hidden');
-                $listEl.addClass('active');
-                $close.css( 'pointer-events', 'none');
-                var workCount = $('.work-list>div');
-                for (i=0; i<workCount.length; i++){
-                    $('.list-con').eq(i).children('div').css({'transition': '1.5s '+'0.'+i+'s ease-in-out'});
-                }
-                setTimeout(function() {
-                    $close.css( 'pointer-events', '');
-                }, 1500);
+            $open.on('click', function(){
+                handleOpen();
             });
+            
+            $close.on('click', function(){
+                handleClose();
+            });
+        }
 
-            $close.on('click',function(){
-                $body.css('overflow-y','');
-                $listEl.removeClass('active');
-                $open.css( 'pointer-events', 'none');
-                $listEl.css( 'transition', '0.5s 2s');
-                setTimeout(function() {
-                    $open.css( 'pointer-events', '');
-                    $listEl.css( 'transition', '');
-                }, 2300);
-            });
+        function handleOpen(){
+            $body.css('overflow-y','hidden');
+            $listEl.addClass('active');
+            $close.css( 'pointer-events', 'none');
+            var workCount = $('.work-list>div');
+            for (i=0; i<workCount.length; i++){
+                $('.list-con').eq(i).children('div').css({'transition': '1.5s '+'0.'+i+'s ease-in-out'});
+            }
+            setTimeout(function() {
+                $close.css( 'pointer-events', '');
+            }, 1500);
+        }
+
+        function handleClose(){
+            $body.css('overflow-y','');
+            $listEl.removeClass('active');
+            $open.css( 'pointer-events', 'none');
+            $listEl.css( 'transition', '0.5s 2s');
+            setTimeout(function() {
+                $open.css( 'pointer-events', '');
+                $listEl.css( 'transition', '');
+            }, 2300);
         }
 
         init(obj);
