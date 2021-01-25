@@ -14,16 +14,16 @@ var UIPort = {
         function init(obj) {
             $main = $(obj);
             $work = $main.find('.work');
-            $workNum = $main.find('.work > div');
+            $workEl = $main.find('.work > div');
             $contact = $main.find('.contact');
         }
 
         function event01() {
-            for(var i=0; i<$workNum.length; i++){
-                if(wScroll >= $workNum.eq([i]).offset().top - $(window).height() / 1.5){
-                    $workNum.eq([i]).addClass('view');
+            $workEl.each(function(){
+                if(wScroll >= $(this).offset().top - $(window).height() / 1.5){
+                    $(this).addClass('view');
                 }
-            }
+            });
         }
         function event02() {
             $('.h-text, .bot-text').css({ 'transform': 'translate3d(0px, ' + -pageYOffset/500 + '%, 0px) skew(0deg, '+pageYOffset/100 +'deg)', 'opacity': 1-pageYOffset/450});
@@ -58,14 +58,15 @@ var UIPort = {
             $sub = $(obj);
             $showCon = $sub.find('.transform');
             $paging = $sub.find('.paging');
+            
         }
-
+        
         function event01() {
-            for(var i=0; i<$showCon.length; i++){
-                if(wScroll >= $showCon.eq([i]).offset().top - $(window).height() / 1.2){
-                    $showCon.eq([i]).addClass('active');
+            $showCon.each(function(){
+                if(wScroll >= $(this).offset().top - $(window).height() / 1.2){
+                    $(this).addClass('active');
                 }
-            }   
+            }); 
         }
         function event02() {
             if(wScroll >= $paging.offset().top - $(window).height() / 1){
