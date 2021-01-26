@@ -6,11 +6,11 @@ body {font-size: 15px; font-family: 'Prompt', sans-serif, 'Apple SD Gothic Neo';
 article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, div { display:block;}
 ul, ol, dl { list-style:none;}
 img, video { max-width:100%; border:0; vertical-align:top;}
-a, a:hover, a:active{text-decoration:none; color: #111}
+a, a:hover, a:active{text-decoration:none; color: #111; cursor:none;}
 input, textarea {color: #fff; font-weight: 500; border-radius: 0;}
 table { border-collapse:collapse; border-spacing:0;}
 input, select { vertical-align:middle; }
-button {background:none;font-family:inherit;font-size:1em;outline:none;}
+button {background:none;font-family:inherit;font-size:1em;outline:none;cursor:none;}
 label { cursor:pointer;}
 i,em,address { font-style:normal; font-weight:normal;}
 strong{font-weight:normal;}
@@ -56,7 +56,7 @@ header nav li .work-btn:hover:before {opacity:1;width:100%;}
 .work-list .list-item3 .thumb-con {background: url('../image/kukdo_nav.png') center no-repeat;background-size:cover;}
 .work-list .list-item4 .thumb-con {background: url('../image/shin_nav.png') center no-repeat;background-size:cover;}
 .work-list .list-item5 .thumb-con {background: url('../image/hiot_nav.png') center no-repeat;background-size:cover;}
-.close {position:absolute;top:30px;left:-80px;z-index:120;width:45px;height:45px;cursor:pointer;background:#fff;border-radius:50%;transition: .5s;}
+.close {position:absolute;top:30px;left:-80px;z-index:120;width:45px;height:45px;background:#fff;border-radius:50%;transition: .5s;}
 .close:hover {transform: rotate(90deg);}
 .close i:nth-child(1), 
 .close i:nth-child(2) {position:absolute;top:50%;left:50%;width:30px;height:4px;background:#111;}
