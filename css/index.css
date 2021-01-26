@@ -7,11 +7,10 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 ul, ol, dl { list-style:none;}
 img, video { max-width:100%; border:0; vertical-align:top;}
 a, a:hover, a:active{text-decoration:none; color: #111; cursor:none;}
-input, textarea {color: #fff; font-weight: 500; border-radius: 0;}
+input, textarea {color: #fff; font-weight: 500; border-radius: 0; cursor:none;}
 table { border-collapse:collapse; border-spacing:0;}
-input, select { vertical-align:middle; }
+input, select { vertical-align:middle;}
 button {background:none;font-family:inherit;font-size:1em;outline:none;cursor:none;}
-label { cursor:pointer;}
 i,em,address { font-style:normal; font-weight:normal;}
 strong{font-weight:normal;}
 .hidden{ position:absolute; left:-1000%; top:0; width:1px; height:1px; line-height:0; overflow:hidden;}
