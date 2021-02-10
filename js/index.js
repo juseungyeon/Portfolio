@@ -98,11 +98,11 @@ var UIPort = {
         function event(){
             tl = new TimelineMax();
             tl.add([
-                TweenMax.staggerTo('header h1, header .work-btn',1,{opacity:1, x:0,ease: Power3.easeOut},0.2),
+                TweenMax.staggerTo('header h1, header .work-btn',1.3,{opacity:1, x:0,ease: Power3.easeOut},0.2),
                 TweenMax.to('.intro .trans-text',0.7,{x:0,y:0,delay: 0.4,ease: Power3.easeOut})
             ])
-            .staggerTo('.h-text p, .bot-text p',1.2,{opacity:1,y:0,rotation:0,ease: Power3.easeOut},0.2,"-=0.7")
-            .to('.scroll-wrap span',1.2,{width:'100%',ease: Power3.easeOut},"-=0.7")
+            .staggerTo('.h-text p, .bot-text p',1.3,{opacity:1,y:0,rotation:0,ease: Power3.easeOut},0.2,"-=0.7")
+            .to('.scroll-wrap span',1.5,{width:'100%',ease: Power3.easeOut},"-=0.7")
             .to('.scroll-wrap svg',0.8,{opacity:1},"-=0.5");
 
             t2 = new TimelineMax();
