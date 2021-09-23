@@ -1,267 +1,207 @@
+const PortUi = (function() {
 
-var UIPort = {
-    checkObj: function (obj) {
-        return $(obj).length == 0 ? false : true;
-    },
+    const _load_init = function(){
+        _addEvent();
+    }
 
-    mainScroll: function (obj) {
-        if (!UIPort.checkObj(obj)) {
-            return;
+    const _addEvent = function(){
+        _setIeError();
+        _setTxtMotion();
+        _setCursor();
+        _setPageTransMotion();
+        _setIndicator();
+        window.addEventListener('scroll', _setMainScrollMotion);
+        window.addEventListener('scroll',_setSubScrollMotion);
+        window.addEventListener('click',_setMenuToggle);
+    }
+
+   
+    function _setIeError(){
+        var agent = navigator.userAgent.toLowerCase();
+
+        if ( (navigator.appName == 'Netscape' && navigator.userAgent.search('Trident') != -1) || (agent.indexOf("msie") != -1) ) {
+            alert('Internet Explorer는 호환되지 않는 브라우저 입니다.')
         }
+        // const agent = navigator.userAgent.toLowerCase();
+        // if((navigator.appName == 'Netscape' && navigator.userAgent.search('Trident') != -1) || (agent.indexOf("msie") != -1)){
+        //     $('body').css('display','none');
+        //     alert('IE는 지원하지 않습니다');
+        // }
+        console.log("ie지원");
+    }
 
-        var wScroll = $(window).scrollTop();
+    function _setMainScrollMotion(){
+        let scrollVal = window.pageYOffset;
+        const windowHeight = window.innerHeight;
+        const work = document.querySelectorAll('.work');
+        const workEl = document.querySelectorAll('.work > div');
+        const contact = document.querySelector('.contact');
+        const contactBg = document.querySelector('.trans-bg');
 
-        function init(obj) {
-            $main = $(obj);
-            $work = $main.find('.work');
-            $workEl = $main.find('.work > div');
-            $contact = $main.find('.contact');
-        }
-
-        function event01() {
-            $workEl.each(function(){
-                if(wScroll >= $(this).offset().top - $(window).height() / 1.5){
-                    $(this).addClass('view');
+        function mainWork(){
+            workEl.forEach(works => {
+                if(scrollVal >=  works.offsetTop + windowHeight / 1.8) {
+                    works.classList.add('view');
                 }
             });
         }
-        function event02() {
-            $('.h-text, .bot-text').css({ 'transform': 'translate3d(0px, ' + -pageYOffset/500 + '%, 0px) skew(0deg, '+pageYOffset/100 +'deg)', 'opacity': 1-pageYOffset/450});
-            $('.scroll-wrap').css({'opacity': 1-pageYOffset/450});
-            if(wScroll>= $work.offset().top) {
-                $('.h-text').css({ 'transform': 'translate3d(0px, -2%, 0px) skew(0deg, 6deg)', 'opacity': 0});
+        function mainTxt(){
+            $('.h-text, .bot-text').css({ 
+                'transform': 'translate3d(0px, ' + -scrollVal/500 + '%, 0px) skew(0deg, '+scrollVal/100 +'deg)', 'opacity': 1-scrollVal/450});
+                $('.scroll-wrap').css({'opacity': 1-scrollVal/450});
+                if(scrollVal>= work.offsetTop) {
+                    $('.h-text').css({ 'transform': 'translate3d(0px, -2%, 0px) skew(0deg, 6deg)', 'opacity': 0});
             }
         }
-        function event03() {
-            if(wScroll >= $contact.offset().top - $(window).height() / 1.8){
-                $('.trans-bg').addClass('up');
+        function mainContact(){
+            if(!contact) return;
+            if(scrollVal >= contact.offsetTop - windowHeight / 1.8){
+                contactBg.classList.add('up');
             }
             else {
-                $('.trans-bg').removeClass('up');
+                contactBg.classList.remove('up');
             }
         }
 
-        init(obj);
-        event01();
-        event02();
-        event03();
-    },
+        mainWork();
+        mainTxt();
+        mainContact();
+    }
 
-    subScroll: function (obj) {
-        if (!UIPort.checkObj(obj)) {
-            return;
-        }
-
-        var wScroll = $(window).scrollTop();
+    function _setSubScrollMotion(){
+        let scrollVal = window.pageYOffset;
+        const windowHeight = window.innerHeight;
+        const subImgEl = document.querySelectorAll('.transform');
+        const paging = document.querySelector('.paging');
+        const pagingBg = document.querySelector('.trans-bg');
         
-        function init(obj) {
-            $sub = $(obj);
-            $showCon = $sub.find('.transform');
-            $paging = $sub.find('.paging');
-            
-        }
-        
-        function event01() {
-            $showCon.each(function(){
-                if(wScroll >= $(this).offset().top - $(window).height() / 1.2){
-                    $(this).addClass('active');
+    
+        function subConImg(){        
+            subImgEl.forEach(subImgs => {
+                if(scrollVal >=  subImgs.offsetTop) {
+                    subImgs.classList.add('active');
                 }
-            }); 
+                console.dir( subImgEl[2].offsetTop);
+            });
         }
-        function event02() {
-            if(wScroll >= $paging.offset().top - $(window).height() / 1){
-                $('.trans-bg').addClass('up');
+        function subTxt(){
+            $('.head-img h2').css({ 'transform': 'translateY(' + scrollVal/35 + 'vh) '});
+        }
+        function subPaging(){
+            if(!paging) return;
+            if(scrollVal >= paging.offsetTop - windowHeight / 1){
+                pagingBg.classList.add('up');
             }
             else {
-                $('.trans-bg').removeClass('up');
+                pagingBg.classList.remove('up');
             }
         }
-        function event03(){
-            $('.head-img h2').css({ 'transform': 'translateY(' + pageYOffset/35 + 'vh) '});
+        console.log(3);
+
+        subConImg();
+        subTxt();
+        subPaging();
+    }
+
+    function _setTxtMotion(){
+        tl = new TimelineMax();
+        tl.add([
+            TweenMax.staggerTo('header h1, header .work-btn',1.4,{opacity:1, x:0,ease: Power3.easeOut},0.2),
+            TweenMax.to('.intro .trans-text',0.7,{x:0,y:0,delay: 0.4,ease: Power3.easeOut})
+        ])
+        .staggerTo('.h-text p, .bot-text p',1.3,{opacity:1,y:0,rotation:0,ease: Power3.easeOut},0.2,"-=0.7")
+        .to('.scroll-wrap span',1.3,{width:'100%',ease: Power3.easeOut},"-=0.7")
+        .to('.scroll-wrap svg',0.8,{opacity:1},"-=0.5");
+
+        t2 = new TimelineMax();
+        t2.to('.head-img img, .back a',0.8,{opacity:1,delay: 1})
+        .to('.head-img h2',1,{opacity:1,y:0,rotation:0,ease: Power3.easeOut},"-=0.5");
+    }
+
+    function _setMenuToggle(){
+        const body = document.querySelector('body');
+        const nav = document.querySelector('.work-list');
+        const navEl = document.querySelectorAll('.work-list > div');
+        const openBtn = document.querySelector('.work-btn');
+        const closeBtn = document.querySelector('.close');
+        
+        if(!nav.classList.contains('active')){
+            body.style.overflow  = 'hidden';
+            nav.classList.add('active');
+            closeBtn.style.pointerEvents = 'none';
+            for (i=0; i<navEl.length; i++){
+                $('.list-con').eq(i).children('div').css({'transition': 'transform 1.5s '+'0.'+i+'s ease-in-out'});
+            }
+            setTimeout(function() {
+                closeBtn.style.pointerEvents = '';
+            }, 1500);
+        }
+        else{
+            body.style.overflow  = '';
+            nav.classList.remove('active');
+            openBtn.style.pointerEvents = 'none';
+            nav.style.transition = '0.5s 2s';
+            setTimeout(function() {
+                openBtn.style.pointerEvents = '';
+                nav.style.transition = '';
+            }, 2300);
         }
 
-        init(obj);
-        event01();
-        event02();
-        event03();
-    },
+    }
 
-    portAni: function (obj) {
-        if (!UIPort.checkObj(obj)) {
-            return;
-        }
-
-        function init(obj) {
-            $animation = $(obj);
-        }
-
-        function event(){
-            tl = new TimelineMax();
-            tl.add([
-                TweenMax.staggerTo('header h1, header .work-btn',1.4,{opacity:1, x:0,ease: Power3.easeOut},0.2),
-                TweenMax.to('.intro .trans-text',0.7,{x:0,y:0,delay: 0.4,ease: Power3.easeOut})
-            ])
-            .staggerTo('.h-text p, .bot-text p',1.3,{opacity:1,y:0,rotation:0,ease: Power3.easeOut},0.2,"-=0.7")
-            .to('.scroll-wrap span',1.3,{width:'100%',ease: Power3.easeOut},"-=0.7")
-            .to('.scroll-wrap svg',0.8,{opacity:1},"-=0.5");
-
-            t2 = new TimelineMax();
-            t2.to('.head-img img, .back a',0.8,{opacity:1,delay: 1})
-            .to('.head-img h2',1,{opacity:1,y:0,rotation:0,ease: Power3.easeOut},"-=0.5");
-        }
-
-        init(obj);
-        event();
-    },
-
-    pageTransition: function(obj){
-        if (!UIPort.checkObj(obj)) {
-            return;
-        }
-
-        function init(obj) {
-            $animation02 = $(obj);
-        }
-
-        function event(){
+    function _setPageTransMotion(){
+        const subPage = document.querySelector('.work-page');
+        if(subPage){
             $('body').append("<div class='page-loader'><div class='pl1'></div><div class='pl2'></div><div class='pl3'></div></div>");
             $('.page-loader').addClass('visible');
             setTimeout(function() {
                 $('.page-loader').remove();
             }, 1800);
         }
-        
-        init(obj);
-        event();
-    },
+    }
 
-    menuToggle: function (obj) {
-        if (!UIPort.checkObj(obj)) {
-            return;
-        }
 
-        function init(obj) {
-            $open = $(obj);
-            $body = $('body');
-            $listEl = $body.find('.work-list');
-            $close = $listEl.find('.close');
-        }
+    function _setCursor(){
+        $('body').prepend('<div class="cursor"></div>');
+        $('body, html').mousemove(function(e){
+            $('.cursor').css('left',e.pageX-15).css('top',e.pageY-15);
+        });
+    }
 
-        function event() {
-            $open.on('click', function(){
-                handleOpen();
-            });
-            
-            $close.on('click', function(){
-                handleClose();
-            });
-        }
-
-        function handleOpen(){
-            $body.css('overflow-y','hidden');
-            $listEl.addClass('active');
-            $close.css( 'pointer-events', 'none');
-            var workCount = $('.work-list>div');
-            for (i=0; i<workCount.length; i++){
-                $('.list-con').eq(i).children('div').css({'transition': '1.5s '+'0.'+i+'s ease-in-out'});
-            }
-            setTimeout(function() {
-                $close.css( 'pointer-events', '');
-            }, 1500);
-        }
-
-        function handleClose(){
-            $body.css('overflow-y','');
-            $listEl.removeClass('active');
-            $open.css( 'pointer-events', 'none');
-            $listEl.css( 'transition', '0.5s 2s');
-            setTimeout(function() {
-                $open.css( 'pointer-events', '');
-                $listEl.css( 'transition', '');
-            }, 2300);
-        }
-
-        init(obj);
-        event();
-    },
-
-    indicator : function(obj){
-        if (!UIPort.checkObj(obj)) {
-            return;
-        }
-
-        function init(obj) {
-            $indicator = $(obj);
-        }
-
-        function event() {
-            var win = jQuery(window);
-            var moveIndicator = debounce(function() {
-                var viewportHeight = $(window).height();
-                var documentHeight = $(document).height();
-                var hasScrolled = $(window).scrollTop();
-                var percent = (hasScrolled / (documentHeight - viewportHeight)) * 100;
-                $indicator.css('top', percent + '%');
-            }, 5);
-            function debounce(func, wait, immediate) {
-                var timeout;
-                return function() {
-                    var context = this,
-                    args = arguments;
-                    var later = function() {
-                    timeout = null;
-                        if (!immediate) func.apply(context, args);
-                    };
-                    var callNow = immediate && !timeout;
-                    clearTimeout(timeout);
-                    timeout = setTimeout(later, wait);
-                    if (callNow) func.apply(context, args);
+    function _setIndicator(){
+        const indicator = document.querySelector('.indicator');
+        const moveIndicator = debounce(function() {
+            let viewportHeight = $(window).height();
+            let documentHeight = $(document).height();
+            let scrollVal = window.pageYOffset;
+            let percent = (scrollVal / (documentHeight - viewportHeight)) * 100;
+            indicator.css('top', percent + '%');
+        }, 5);
+        function debounce(func, wait, immediate) {
+            let timeout;
+            return function() {
+                let context = this,
+                args = arguments;
+                const later = function() {
+                timeout = null;
+                    if (!immediate) func.apply(context, args);
                 };
+                let callNow = immediate && !timeout;
+                clearTimeout(timeout);
+                timeout = setTimeout(later, wait);
+                if (callNow) func.apply(context, args);
             };
-            $(window).on('resize scroll',moveIndicator);
-        }
+        };  
+        //moveIndicator();
+        window.addEventListener('resize scroll',moveIndicator);
+        console.log(1);
+        //$(window).on('resize scroll',moveIndicator);
+    }
 
-        init(obj);
-        event();
-    },
-
-    ieError : function(obj){
-        if (!UIPort.checkObj(obj)) {
-            return;
-        }
-
-        function init(obj) {
-            $error = $(obj);
-        }
-
-        function event(){
-            var agent = navigator.userAgent.toLowerCase();
-            function loadError(){
-                if((navigator.appName == 'Netscape' && navigator.userAgent.search('Trident') != -1) || (agent.indexOf("msie") != -1)){
-                    $('body').css('display','none');
-                    alert('IE는 지원하지 않습니다');
-                }
-            }
-            $(document).on('ready',loadError);
-        }
-
-        init(obj);
-        event();
-    },
-};
-
-$(document).ready(function(){
-    UIPort.portAni('.intro, .work-page');
-    UIPort.pageTransition('.work-page');
-    UIPort.menuToggle('.work-btn');
-    UIPort.indicator('.indicator');
-    UIPort.ieError('body');
-    $('body').prepend('<div class="cursor"></div>');
-    $('body, html').mousemove(function(e){
-        $('.cursor').css('left',e.pageX-15).css('top',e.pageY-15);
-    });
-    $(window).scroll(function(){ 
-        UIPort.mainScroll('.main-wrap');
-        UIPort.subScroll('.work-page');
-    });
-});
+   
+    
+    return{
+        load_init : _load_init
+    }
+})();
+PortUi.load_init();
