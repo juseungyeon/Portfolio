@@ -8,11 +8,11 @@ const PortUi = (function() {
         window.addEventListener('DOMContentLoaded',_setIeError);
         window.addEventListener('scroll', _setMainScrollMotion);
         window.addEventListener('scroll',_setSubScrollMotion);
+        window.addEventListener('click',_setMenuToggle);
         _setTxtMotion();
-        _setCursor();
         _setPageTransMotion();
+        _setCursor();
         _setIndicator();
-        _setMenuToggle();
     }
 
     function _setIeError(){
@@ -70,7 +70,7 @@ const PortUi = (function() {
             
         function subConImg(){        
             subImgEl.forEach(function(item) {
-                if(scrollVal >=  item.offsetTop) {
+                if(scrollVal >=  item.offsetTop  - windowHeight / 1.8) {
                     item.classList.add('active');
                 }
             });
@@ -93,6 +93,38 @@ const PortUi = (function() {
         subPaging();
     }
 
+    function _setMenuToggle(){
+        const body = document.querySelector('body');
+        const nav = document.querySelector('.work-list');
+        const navList = document.querySelectorAll('.list-con > div');
+        const openBtn = document.querySelector('.work-btn');
+        const closeBtn = document.querySelector('.close');
+        
+        openBtn.addEventListener('click',function(){
+            if(!nav.classList.contains('active')){
+                body.style.overflow  = 'hidden';
+                nav.classList.add('active');
+                closeBtn.style.pointerEvents = 'none';
+                navList.forEach(function(item, index){
+                    item.style.transition = 'transform 1.5s '+'0.'+index+'s ease-in-out';
+                });
+                setTimeout(function() {
+                    closeBtn.style.pointerEvents = '';
+                }, 1500);
+            }
+        });
+        closeBtn.addEventListener('click',function(){
+            body.style.overflow  = '';
+            nav.classList.remove('active');
+            openBtn.style.pointerEvents = 'none';
+            nav.style.transition = '0.5s 2s';
+            setTimeout(function() {
+                openBtn.style.pointerEvents = '';
+                nav.style.transition = '';
+            }, 2300);
+        });
+    }
+
     function _setTxtMotion(){
         tl = new TimelineMax();
         tl.add([
@@ -106,41 +138,6 @@ const PortUi = (function() {
         t2 = new TimelineMax();
         t2.to('.head-img img, .back a',0.8,{opacity:1,delay: 1})
         .to('.head-img h2',1,{opacity:1,y:0,rotation:0,ease: Power3.easeOut},"-=0.5");
-    }
-
-    function _setMenuToggle(){
-        const body = document.querySelector('body');
-        const nav = document.querySelector('.work-list');
-        const navEl = document.querySelectorAll('.work-list > div');
-        const openBtn = document.querySelector('.work-btn');
-        const closeBtn = document.querySelector('.close');
-        
-        openBtn.addEventListener('click',function(){
-            if(!nav.classList.contains('active')){
-                body.style.overflow  = 'hidden';
-                nav.classList.add('active');
-                closeBtn.style.pointerEvents = 'none';
-                navEl.forEach(function(item){
-                    item.style.transition = 'transform 1.5s';
-                });
-                // for (i=0; i<navEl.length; i++){
-                //     $('.list-con').eq(i).children('div').css({'transition': 'transform 1.5s '+'0.'+i+'s ease-in-out'});
-                // }
-                setTimeout(function() {
-                    closeBtn.style.pointerEvents = '';
-                }, 1500);
-            }
-            else{
-                body.style.overflow  = '';
-                nav.classList.remove('active');
-                openBtn.style.pointerEvents = 'none';
-                nav.style.transition = '0.5s 2s';
-                setTimeout(function() {
-                    openBtn.style.pointerEvents = '';
-                    nav.style.transition = '';
-                }, 2300);
-            }    
-        })
     }
 
     function _setPageTransMotion(){
@@ -163,13 +160,6 @@ const PortUi = (function() {
 
     function _setIndicator(){
         const indicator = document.querySelector('.indicator');
-        const moveIndicator = debounce(function() {
-            let viewportHeight = $(window).height();
-            let documentHeight = $(document).height();
-            let scrollVal = window.pageYOffset;
-            let percent = (scrollVal / (documentHeight - viewportHeight)) * 100;
-            indicator.css('top', percent + '%');
-        }, 5);
         function debounce(func, wait, immediate) {
             let timeout;
             return function() {
@@ -184,11 +174,19 @@ const PortUi = (function() {
                 timeout = setTimeout(later, wait);
                 if (callNow) func.apply(context, args);
             };
-        };  
-        //moveIndicator();
-        window.addEventListener('resize scroll',moveIndicator);
-        console.log(1);
-        //$(window).on('resize scroll',moveIndicator);
+        };
+        window.addEventListener('scroll',function(){
+            const moveIndicator = debounce(function() {
+                let viewportHeight = window.innerHeight;
+                let documentHeight = document.body.clientHeight;
+                let scrollVal = window.pageYOffset;
+                let percent = (scrollVal / (documentHeight - viewportHeight)) * 100;
+            
+                    indicator.style.top = percent + '%';
+                
+            }, 5);
+            moveIndicator();
+        });
     }
 
     return{

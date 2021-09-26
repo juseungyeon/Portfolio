@@ -155,7 +155,7 @@ header nav li .work-btn:hover:before {opacity:1;width:100%;}
 .brief .description dl dt {margin-bottom:20px;color:#555}
 .brief .description dl dd {margin-bottom:10px;font-size:14px;}
 .brief .description dl dd a {color:#fff;}
-.content {position:relative;margin: 70px auto;width:65%;text-align: center;}
+.content {margin: 70px auto;width:65%;text-align: center;}
 .content img{box-shadow:2px 5px 12px 0px #d4cece;}
 .content div {margin-bottom:80px;}
 .content span {position:absolute;transform:translateX(-50%);font-size:53px;font-weight:700;}
