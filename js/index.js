@@ -5,29 +5,22 @@ const PortUi = (function() {
     }
 
     const _addEvent = function(){
-        _setIeError();
+        window.addEventListener('DOMContentLoaded',_setIeError);
+        window.addEventListener('scroll', _setMainScrollMotion);
+        window.addEventListener('scroll',_setSubScrollMotion);
         _setTxtMotion();
         _setCursor();
         _setPageTransMotion();
         _setIndicator();
-        window.addEventListener('scroll', _setMainScrollMotion);
-        window.addEventListener('scroll',_setSubScrollMotion);
-        window.addEventListener('click',_setMenuToggle);
+        _setMenuToggle();
     }
 
-   
     function _setIeError(){
-        var agent = navigator.userAgent.toLowerCase();
-
-        if ( (navigator.appName == 'Netscape' && navigator.userAgent.search('Trident') != -1) || (agent.indexOf("msie") != -1) ) {
-            alert('Internet Explorer는 호환되지 않는 브라우저 입니다.')
+        const agent = navigator.userAgent.toLowerCase();
+        if((navigator.appName == 'Netscape' && navigator.userAgent.search('Trident') != -1) || (agent.indexOf("msie") != -1)){
+            $('body').css('display','none');
+            alert('IE는 지원하지 않습니다');       
         }
-        // const agent = navigator.userAgent.toLowerCase();
-        // if((navigator.appName == 'Netscape' && navigator.userAgent.search('Trident') != -1) || (agent.indexOf("msie") != -1)){
-        //     $('body').css('display','none');
-        //     alert('IE는 지원하지 않습니다');
-        // }
-        console.log("ie지원");
     }
 
     function _setMainScrollMotion(){
@@ -39,9 +32,9 @@ const PortUi = (function() {
         const contactBg = document.querySelector('.trans-bg');
 
         function mainWork(){
-            workEl.forEach(works => {
-                if(scrollVal >=  works.offsetTop + windowHeight / 1.8) {
-                    works.classList.add('view');
+            workEl.forEach(function(item) {
+                if(scrollVal >=  item.offsetTop + windowHeight / 1.8) {
+                    item.classList.add('view');
                 }
             });
         }
@@ -74,14 +67,12 @@ const PortUi = (function() {
         const subImgEl = document.querySelectorAll('.transform');
         const paging = document.querySelector('.paging');
         const pagingBg = document.querySelector('.trans-bg');
-        
-    
+            
         function subConImg(){        
-            subImgEl.forEach(subImgs => {
-                if(scrollVal >=  subImgs.offsetTop) {
-                    subImgs.classList.add('active');
+            subImgEl.forEach(function(item) {
+                if(scrollVal >=  item.offsetTop) {
+                    item.classList.add('active');
                 }
-                console.dir( subImgEl[2].offsetTop);
             });
         }
         function subTxt(){
@@ -96,7 +87,6 @@ const PortUi = (function() {
                 pagingBg.classList.remove('up');
             }
         }
-        console.log(3);
 
         subConImg();
         subTxt();
@@ -125,28 +115,32 @@ const PortUi = (function() {
         const openBtn = document.querySelector('.work-btn');
         const closeBtn = document.querySelector('.close');
         
-        if(!nav.classList.contains('active')){
-            body.style.overflow  = 'hidden';
-            nav.classList.add('active');
-            closeBtn.style.pointerEvents = 'none';
-            for (i=0; i<navEl.length; i++){
-                $('.list-con').eq(i).children('div').css({'transition': 'transform 1.5s '+'0.'+i+'s ease-in-out'});
+        openBtn.addEventListener('click',function(){
+            if(!nav.classList.contains('active')){
+                body.style.overflow  = 'hidden';
+                nav.classList.add('active');
+                closeBtn.style.pointerEvents = 'none';
+                navEl.forEach(function(item){
+                    item.style.transition = 'transform 1.5s';
+                });
+                // for (i=0; i<navEl.length; i++){
+                //     $('.list-con').eq(i).children('div').css({'transition': 'transform 1.5s '+'0.'+i+'s ease-in-out'});
+                // }
+                setTimeout(function() {
+                    closeBtn.style.pointerEvents = '';
+                }, 1500);
             }
-            setTimeout(function() {
-                closeBtn.style.pointerEvents = '';
-            }, 1500);
-        }
-        else{
-            body.style.overflow  = '';
-            nav.classList.remove('active');
-            openBtn.style.pointerEvents = 'none';
-            nav.style.transition = '0.5s 2s';
-            setTimeout(function() {
-                openBtn.style.pointerEvents = '';
-                nav.style.transition = '';
-            }, 2300);
-        }
-
+            else{
+                body.style.overflow  = '';
+                nav.classList.remove('active');
+                openBtn.style.pointerEvents = 'none';
+                nav.style.transition = '0.5s 2s';
+                setTimeout(function() {
+                    openBtn.style.pointerEvents = '';
+                    nav.style.transition = '';
+                }, 2300);
+            }    
+        })
     }
 
     function _setPageTransMotion(){
@@ -159,7 +153,6 @@ const PortUi = (function() {
             }, 1800);
         }
     }
-
 
     function _setCursor(){
         $('body').prepend('<div class="cursor"></div>');
@@ -198,8 +191,6 @@ const PortUi = (function() {
         //$(window).on('resize scroll',moveIndicator);
     }
 
-   
-    
     return{
         load_init : _load_init
     }
