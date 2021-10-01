@@ -8,7 +8,7 @@ const PortUi = (function() {
         window.addEventListener('DOMContentLoaded',_setIeError);
         window.addEventListener('scroll', _setMainScrollMotion);
         window.addEventListener('scroll',_setSubScrollMotion);
-        window.addEventListener('click',_setMenuToggle);
+        _setMenuToggle();
         _setTxtMotion();
         _setPageTransMotion();
         _setCursor();
@@ -100,6 +100,7 @@ const PortUi = (function() {
         const openBtn = document.querySelector('.work-btn');
         const closeBtn = document.querySelector('.close');
         
+        if(!nav) return;
         openBtn.addEventListener('click',function(){
             if(!nav.classList.contains('active')){
                 body.style.overflow  = 'hidden';
