@@ -144,18 +144,20 @@ const PortUi = (function() {
     function _setPageTransMotion(){
         const subPage = document.querySelector('.work-page');
         if(subPage){
-            $('body').append("<div class='page-loader'><div class='pl1'></div><div class='pl2'></div><div class='pl3'></div></div>");
-            $('.page-loader').addClass('visible');
+            document.querySelector('body').insertAdjacentHTML('beforeEnd', "<div class='page-loader'><div class='pl1'></div><div class='pl2'></div><div class='pl3'></div></div>");
+            document.querySelector('.page-loader').classList.add('visible');
             setTimeout(function() {
-                $('.page-loader').remove();
+                document.querySelector('.page-loader').remove();
             }, 1800);
         }
     }
 
     function _setCursor(){
-        $('body').prepend('<div class="cursor"></div>');
-        $('body, html').mousemove(function(e){
-            $('.cursor').css('left',e.pageX-15).css('top',e.pageY-15);
+        document.querySelector('body').insertAdjacentHTML('afterBegin', "<div class='cursor'></div>");
+        window.addEventListener('mousemove',function(e){
+            const cursor = document.querySelector('.cursor');
+            cursor.style.left = e.pageX-15 + "px";
+            cursor.style.top = e.pageY-15 + "px";
         });
     }
 
