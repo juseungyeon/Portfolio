@@ -39,6 +39,7 @@ const PortUi = (function() {
             });
         }
         function mainTxt(){
+            
             $('.h-text, .bot-text').css({ 
                 'transform': 'translate3d(0px, ' + -scrollVal/500 + '%, 0px) skew(0deg, '+scrollVal/100 +'deg)', 'opacity': 1-scrollVal/450});
                 $('.scroll-wrap').css({'opacity': 1-scrollVal/450});
@@ -76,7 +77,9 @@ const PortUi = (function() {
             });
         }
         function subTxt(){
-            $('.head-img h2').css({ 'transform': 'translateY(' + scrollVal/35 + 'vh) '});
+            const title = document.querySelector('.head-img h2');
+            // title.style.transform = 'translate3d(0, ' +scrollVal/35+ 'vh,0)';
+            title.style.transform = `translate3d(0, ${scrollVal/35}vh,0)`;
         }
         function subPaging(){
             if(!paging) return;
