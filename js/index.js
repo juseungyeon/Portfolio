@@ -15,6 +15,8 @@ const PortUi = (function() {
         _setIndicator();
     }
 
+    const mainPage = document.querySelector('.main-wrap');
+    const subPage = document.querySelector('.work-page');
     function _setIeError(){
         const agent = navigator.userAgent.toLowerCase();
         if((navigator.appName == 'Netscape' && navigator.userAgent.search('Trident') != -1) || (agent.indexOf("msie") != -1)){
@@ -26,11 +28,12 @@ const PortUi = (function() {
     function _setMainScrollMotion(){
         let scrollVal = window.pageYOffset;
         const windowHeight = window.innerHeight;
-        const work = document.querySelectorAll('.work');
+        const work = document.querySelector('.work');
         const workEl = document.querySelectorAll('.work > div');
         const contact = document.querySelector('.contact');
         const contactBg = document.querySelector('.trans-bg');
 
+        if(!mainPage)return;
         function mainWork(){
             workEl.forEach(function(item) {
                 if(scrollVal >=  item.offsetTop + windowHeight / 1.8) {
@@ -40,25 +43,16 @@ const PortUi = (function() {
         }
         function mainTxt(){
             const aniText = document.querySelectorAll('.h-text, .bot-text');
-            aniText.forEach(function(item){
-                
-                // item.style.setAttribute('style',`transform:translate3d(0, ${-scrollVal/500}%,0); background-color:red;`);
-                item.style.transform = `translate3d(0, ${-scrollVal/500}%,0) skew(0deg, ${scrollVal/100}deg)`;
-                item.style.opacity = `1-${scrollVal/450}`;
-            
+            const scrollWrap = document.querySelector('.scroll-wrap');
+            aniText.forEach(function(item){            
+                item.setAttribute('style','transform:translate3d(0, '+(-scrollVal/500)+'%,0) skew(0deg, '+(scrollVal/100)+'deg); opacity:'+(1-scrollVal/550)+';');
             });
-            if(scrollVal>= work.offsetTop) {
-                $('.h-text').css({ 'transform': 'translate3d(0px, -2%, 0px) skew(0deg, 6deg)', 'opacity': 0});
+            scrollWrap.setAttribute('style','opacity:'+(1-scrollVal/550)+';');
+            if(scrollVal>= work.offsetTop) {     
+                document.querySelector('.h-text').setAttribute('style','transform:translate3d(0px, -2%, 0px) skew(0deg, 6deg); opacity:0;');
             }
-        //    document.querySelector('').css({ 
-        //         'transform': 'translate3d(0px, ' + -scrollVal/500 + '%, 0px) skew(0deg, '+scrollVal/100 +'deg)', 'opacity': 1-scrollVal/450});
-        //         $('.scroll-wrap').css({'opacity': 1-scrollVal/450});
-        //         if(scrollVal>= work.offsetTop) {
-        //             $('.h-text').css({ 'transform': 'translate3d(0px, -2%, 0px) skew(0deg, 6deg)', 'opacity': 0});
-        //     }
         }
         function mainContact(){
-            if(!contact) return;
             if(scrollVal >= contact.offsetTop - windowHeight / 1.8){
                 contactBg.classList.add('up');
             }
@@ -79,6 +73,7 @@ const PortUi = (function() {
         const paging = document.querySelector('.paging');
         const pagingBg = document.querySelector('.trans-bg');
             
+        if(!subPage) return;
         function subConImg(){        
             subImgEl.forEach(function(item) {
                 if(scrollVal >=  item.offsetTop  - windowHeight / 1.8) {
@@ -88,10 +83,9 @@ const PortUi = (function() {
         }
         function subTxt(){
             document.querySelector('.head-img h2').style.transform = 
-                `translate3d(0, ${scrollVal/35}vh,0)`;
+                'translate3d(0, '+scrollVal/35+'vh,0)';
         }
         function subPaging(){
-            if(!paging) return;
             if(scrollVal >= paging.offsetTop - windowHeight / 1){
                 pagingBg.classList.add('up');
             }
@@ -154,7 +148,6 @@ const PortUi = (function() {
     }
 
     function _setPageTransMotion(){
-        const subPage = document.querySelector('.work-page');
         if(subPage){
             document.querySelector('body').insertAdjacentHTML('beforeEnd', "<div class='page-loader'><div class='pl1'></div><div class='pl2'></div><div class='pl3'></div></div>");
             document.querySelector('.page-loader').classList.add('visible');
