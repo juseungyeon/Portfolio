@@ -39,13 +39,23 @@ const PortUi = (function() {
             });
         }
         function mainTxt(){
+            const aniText = document.querySelectorAll('.h-text, .bot-text');
+            aniText.forEach(function(item){
+                
+                // item.style.setAttribute('style',`transform:translate3d(0, ${-scrollVal/500}%,0); background-color:red;`);
+                item.style.transform = `translate3d(0, ${-scrollVal/500}%,0) skew(0deg, ${scrollVal/100}deg)`;
+                item.style.opacity = `1-${scrollVal/450}`;
             
-            $('.h-text, .bot-text').css({ 
-                'transform': 'translate3d(0px, ' + -scrollVal/500 + '%, 0px) skew(0deg, '+scrollVal/100 +'deg)', 'opacity': 1-scrollVal/450});
-                $('.scroll-wrap').css({'opacity': 1-scrollVal/450});
-                if(scrollVal>= work.offsetTop) {
-                    $('.h-text').css({ 'transform': 'translate3d(0px, -2%, 0px) skew(0deg, 6deg)', 'opacity': 0});
+            });
+            if(scrollVal>= work.offsetTop) {
+                $('.h-text').css({ 'transform': 'translate3d(0px, -2%, 0px) skew(0deg, 6deg)', 'opacity': 0});
             }
+        //    document.querySelector('').css({ 
+        //         'transform': 'translate3d(0px, ' + -scrollVal/500 + '%, 0px) skew(0deg, '+scrollVal/100 +'deg)', 'opacity': 1-scrollVal/450});
+        //         $('.scroll-wrap').css({'opacity': 1-scrollVal/450});
+        //         if(scrollVal>= work.offsetTop) {
+        //             $('.h-text').css({ 'transform': 'translate3d(0px, -2%, 0px) skew(0deg, 6deg)', 'opacity': 0});
+        //     }
         }
         function mainContact(){
             if(!contact) return;
@@ -77,9 +87,8 @@ const PortUi = (function() {
             });
         }
         function subTxt(){
-            const title = document.querySelector('.head-img h2');
-            // title.style.transform = 'translate3d(0, ' +scrollVal/35+ 'vh,0)';
-            title.style.transform = `translate3d(0, ${scrollVal/35}vh,0)`;
+            document.querySelector('.head-img h2').style.transform = 
+                `translate3d(0, ${scrollVal/35}vh,0)`;
         }
         function subPaging(){
             if(!paging) return;
