@@ -20,8 +20,8 @@ const PortUi = (function() {
     function _setIeError(){
         const agent = navigator.userAgent.toLowerCase();
         if((navigator.appName == 'Netscape' && navigator.userAgent.search('Trident') != -1) || (agent.indexOf("msie") != -1)){
-            $('body').css('display','none');
-            alert('IE는 지원하지 않습니다');       
+            document.querySelector('body').style.display = 'none';
+            alert('IE는 지원하지 않습니다'); 
         }
     }
 
@@ -35,17 +35,17 @@ const PortUi = (function() {
 
         if(!mainPage)return;
         function mainWork(){
-            workEl.forEach(function(item) {
-                if(scrollVal >=  item.offsetTop + windowHeight / 1.8) {
-                    item.classList.add('view');
+            workEl.forEach(function(el) {
+                if(scrollVal >=  el.offsetTop + windowHeight / 1.8) {
+                    el.classList.add('view');
                 }
             });
         }
         function mainTxt(){
             const aniText = document.querySelectorAll('.h-text, .bot-text');
             const scrollWrap = document.querySelector('.scroll-wrap');
-            aniText.forEach(function(item){            
-                item.setAttribute('style','transform:translate3d(0, '+(-scrollVal/500)+'%,0) skew(0deg, '+(scrollVal/100)+'deg); opacity:'+(1-scrollVal/550)+';');
+            aniText.forEach(function(el){            
+                el.setAttribute('style','transform:translate3d(0, '+(-scrollVal/500)+'%,0) skew(0deg, '+(scrollVal/100)+'deg); opacity:'+(1-scrollVal/550)+';');
             });
             scrollWrap.setAttribute('style','opacity:'+(1-scrollVal/550)+';');
             if(scrollVal>= work.offsetTop) {     
@@ -75,9 +75,9 @@ const PortUi = (function() {
             
         if(!subPage) return;
         function subConImg(){        
-            subImgEl.forEach(function(item) {
-                if(scrollVal >=  item.offsetTop  - windowHeight / 1.8) {
-                    item.classList.add('active');
+            subImgEl.forEach(function(el) {
+                if(scrollVal >=  el.offsetTop  - windowHeight / 1.8) {
+                    el.classList.add('active');
                 }
             });
         }
@@ -112,8 +112,8 @@ const PortUi = (function() {
                 body.style.overflow  = 'hidden';
                 nav.classList.add('active');
                 closeBtn.style.pointerEvents = 'none';
-                navList.forEach(function(item, index){
-                    item.style.transition = 'transform 1.5s '+'0.'+index+'s ease-in-out';
+                navList.forEach(function(el, index){
+                    el.style.transition = 'transform 1.5s '+'0.'+index+'s ease-in-out';
                 });
                 setTimeout(function() {
                     closeBtn.style.pointerEvents = '';
